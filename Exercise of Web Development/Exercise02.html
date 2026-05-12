@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTML Practice Lab">
+    <title>Information</title>
+    <meta name="admin" content="Outtha Siev E">
+</head>
+<body>
+    <header>
+        <h1>Student Registration System</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a> |
+        <a href="#">Courses</a> |
+        <a href="#">Contact</a>
+    </nav>
+    <section>
+        <h2>Main Section</h2>
+        <p>This page demonstrates HTML elements learned in class.</p>
+    </section>
+    <article>
+        <fieldset>
+            <legend>Personal Information</legend>
+            <br>
+            <form action="/submit.php" method="post">
+                <!-- Username -->
+                <label for="username">Username: </label>
+                <input type="text" id="username" placeholder="Enter Username" title="Enter Your Username" required>
+                <br><br>
+                <!-- Password -->
+                <label for="password">Password: </label>
+                <input type="password" id="password" placeholder="Enter Password" title="Enter Your Password" maxlength="15" required>
+                <br><br>
+                <!-- Email -->
+                <label for="email">Email: </label>
+                <input type="email" id="email" placeholder="Enter Email" title="Enter Your Email" required>
+                <br><br>
+                <!-- Phone -->
+                <label for="phone">Phone: </label>
+                <input type="tel" id="phone" placeholder="Enter Phone" title="Enter Your Phone" pattern="\+885[0-9]{8}" maxlength="15" required>
+                <br><br>
+                <!-- Website -->
+                <label for="website">Website: </label>
+                <input type="text" id="website" placeholder="Enter Website" title="Enter Your Website" required>
+                <br><br>
+                <!-- Search -->
+                <label for="search">Search: </label>
+                <input type="search" id="search" placeholder="Enter Search" title="Enter Your Search" required>
+                <br><br>
+                <!-- Age -->
+                <label for="age">Age: </label>
+                <input type="number" id="age" placeholder="Enter Age" title="Enter Your Age" required>
+                <br><br>
+                <!-- Birthday -->
+                <label for="birthday">Birthday: </label>
+                <input type="date" id="birthday" placeholder="Enter Birthday" title="Enter Your Birthday" required>
+                <br><br>
+                <!-- Meeting Time -->
+                <label for="meeting time">Meeting Time: </label>
+                <input type="time" id="meeting time" placeholder="Enter Meeting Time" title="Enter Your Meeting Time" required>
+                <br><br>
+                <!-- Expiry Month -->
+                <label for="expiry">Expiry: </label>
+                <input type="month" id="expiry" placeholder="Enter Expiry" title="Enter Your Expiry" required>
+                <br><br>
+                <!-- Week Number -->
+                <label for="week number">Week Number: </label>
+                <input type="week" id="week number" placeholder="Enter Week Number" title="Enter Your Week Number" required>
+                <br><br>
+                <!-- Favorite Color -->
+                <label for="favorite color">Favorite Color: </label>
+                <input type="color" id="favorite color" placeholder="Enter Favorite Color" title="Enter Your Favorite Color" required>
+                <br><br>
+                <!-- Gender -->
+                <label for="gender">Gender: </label>
+                <input type="radio" id="male" name="gender" value="male" title="Select male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" title="Select female">
+                <label for="female">Female</label>
+                <br><br>
+                <!-- Hobbies -->
+                <label for="hobbies">Hobbies: </label>
+                <input type="checkbox" id="reading" name="hobbies" value="reading" title="Select reading hobby">
+                <label for="reading">Reading</label>
+                <input type="checkbox" id="music" name="hobbies" value="music" title="Select music hobby">
+                <label for="music">Music</label>
+                <input type="checkbox" id="sports" name="hobbies" value="sports" title="Select sports hobby">
+                <label for="sports">Sports</label>
+                <br><br>
+                <!-- Choose Course -->
+                <label for="choose course">Choose Course: </label>
+                <select name="course" id="course" title="Select your course">
+                    <optgroup label="Programming">
+                        <option value="html">HTML</option>
+                        <option value="js">JavaScript</option>
+                    </optgroup>
+                    <optgroup label="Design">
+                        <option value="figma">Figma</option>
+                        <option value="ps">Photoshop</option>
+                    </optgroup>
+                </select>
+                <br><br>
+                <!-- Message -->
+                <label for="city">Choose City: </label>
+                <input list="cities" id="city" name="city" title="Select city from list">
+                <datalist id="cities">
+                    <option value="Phnom Penh">
+                    <option value="Siem Reap">
+                    <option value="Battambang">
+                </datalist>
+                <br><br>            
+                <!-- Upload Resume -->
+                <label for="message">Message: </label><br>
+                <textarea id="message" name="message" rows="4" cols="30" placeholder="Type your message" title="Enter your message"></textarea>
+                <br><br>            
+                <!-- Upload Resume -->
+                <label for="resume">Upload Resume: </label>
+                <input type="file" id="resume" name="resume" title="Upload your resume">
+                <br><br>
+                <!-- Student ID -->
+                <label for="student_id">Student ID: </label>
+                <input type="text" id="student_id" name="student_id" value="STU001" readonly title="Student ID (readonly)">
+                <br><br>
+                <!-- Prome Code -->
+                <label for="promo">Promo Code: </label>
+                <input type="text" id="promo" name="promo" disabled title="Promo code disabled">
+                <br><br>
+                <!-- Calculation Result -->
+                <label for="result">Calculation Result: </label>
+                <output id="result" name="result">0</output>
+                <br><br>
+                <!-- Submit , Reset , Click Me , Send Form -->
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+                <input type="button" value="Click Me">
+                <button type="submit">Send Form</button>
+            </form>
+        </fieldset>
+    </article>
+    <details>
+        <summary>Click to View Instructions</summary>
+        <p>Please double-check all required fields before submission.</p>
+    </details>
+    <canvas width="200" height="100" style="border:1px solid black;">
+        Your browser does not support canvas.
+    </canvas>
+    <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+    </svg>
+    <footer>
+        <p>© 2026 HTML Practice Lab</p>
+    </footer>
+</body>
+</html>
