@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Course</title>
+    <style>
+        @page { size: A4; margin: 2cm; }
+        body {
+            font-family: 'Khmer OS Battambang', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 2cm;
+            background: white;
+            color: #333;
+        }
+        h1 { color: #2c3e50; border-bottom: 3px solid #e67e22; padding-bottom: 10px; margin-top: 30px; font-size: 28px; }
+        h2 { color: #34495e; margin-top: 25px; font-size: 24px; border-left: 5px solid #e67e22; padding-left: 15px; }
+        h3 { color: #34495e; margin-top: 20px; font-size: 20px; }
+        h4 { color: #555; margin-top: 15px; font-size: 18px; }
+        .cover-page { text-align: center; padding: 100px 0; page-break-after: always; }
+        .cover-page h1 { font-size: 36px; color: #2c3e50; border: none; margin-bottom: 30px; }
+        .cover-page .subtitle { font-size: 20px; color: #7f8c8d; margin: 20px 0; }
+        .cover-page .info { margin-top: 50px; font-size: 18px; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 14px; }
+        pre { background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #e67e22; }
+        pre code { background: none; color: inherit; padding: 0; }
+        .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; }
+        .important { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 15px 0; }
+        .tip { background: #d1ecf1; border-left: 4px solid #17a2b8; padding: 15px; margin: 15px 0; }
+        .exercise { background: #e7f3ff; border: 2px solid #2196F3; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .exercise h4 { color: #2196F3; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        table th { background: #e67e22; color: white; padding: 12px; text-align: left; }
+        table td { border: 1px solid #ddd; padding: 10px; }
+        table tr:nth-child(even) { background: #f2f2f2; }
+        ul, ol { margin: 10px 0; padding-left: 30px; }
+        li { margin: 8px 0; }
+        .page-break { page-break-after: always; }
+        .flowchart { text-align: center; margin: 22px auto; padding: 18px 12px 14px; border: 2px solid #222; border-radius: 4px; background: #fff; page-break-inside: avoid; }
+        .flowchart .fc-title { font-size: 15px; font-weight: bold; color: #111; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #222; }
+        .fc-wrap { display: inline-flex; flex-direction: column; align-items: center; gap: 0; }
+        .fc-terminal { display: inline-block; padding: 7px 30px; border: 2.5px solid #000; border-radius: 50px; font-weight: bold; font-size: 14px; background: #222; color: #fff; min-width: 90px; text-align: center; }
+        .fc-process { display: inline-block; padding: 8px 18px; border: 2px solid #000; font-size: 13px; background: #fff; color: #000; min-width: 160px; text-align: center; line-height: 1.4; }
+        .fc-arrow { width: 2px; height: 26px; background: #000; margin: 0 auto; position: relative; }
+        .fc-arrow::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 9px solid #000; }
+        .fc-arrow-sm { width: 2px; height: 16px; background: #000; margin: 0 auto; position: relative; }
+        .fc-arrow-sm::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid #000; }
+        .fc-label { font-size: 12px; font-weight: bold; color: #222; margin: 3px 0 2px; }
+        @media print { body { padding: 0; } .page-break { page-break-after: always; } }
+    </style>
+</head>
+<body>
+<!-- ==================== CHAPTER 1 ==================== -->
+<h1>❖ 1. Introduction to C</h1>
+
+<h2>1.1 What is C? <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>C គឺជាភាសាសរសេរកម្មវិធីទូទៅ (General-Purpose Programming Language) ដែលត្រូវបានបង្កើតឡើងដោយ <strong>Dennis Ritchie</strong> នៅឆ្នាំ <strong>1972</strong> នៅក្នុងក្រុមហ៊ុន Bell Labs។ C ជាភាសាដែលប្រើ procedural programming paradigm គឺជាភាសានៃការបង្ហាត់ programming មូលដ្ឋានដ៏ល្អបំផុត។</p>
+
+<p>C ត្រូវបានគេប្រើប្រាស់យ៉ាងទូលំទូលាយក្នុងការអភិវឌ្ឍន៍ដូចជា៖</p>
+<ul>
+    <li>Operating Systems (ដូចជា UNIX, Linux kernel)</li>
+    <li>Embedded Systems (microcontrollers, IoT devices)</li>
+    <li>System Software (compilers, assemblers)</li>
+    <li>Device Drivers (កម្មវិធីបញ្ជាឧបករណ៍)</li>
+    <li>Network Protocols (TCP/IP stack)</li>
+    <li>Database Systems (MySQL core)</li>
+</ul>
+
+<h2>1.2 Features and Benefits of C <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h4>1. Procedural Language (ភាសា Procedural)</h4>
+<p>C ប្រើ procedural programming ដែលកម្មវិធីត្រូវបានរៀបចំជា functions/procedures។ ការប្រតិបត្តិ statements ធ្វើតាមលំដាប់ស្ដង់ដារ។</p>
+
+<h4>2. Low-Level Access (ចូលប្រើកម្រិតទាប)</h4>
+<p>C អនុញ្ញាតឱ្យចូលប្រើ hardware ដោយផ្ទាល់តាមរយៈ pointers និង memory addresses ធ្វើឱ្យវាល្អសម្រាប់ system programming។</p>
+
+<h4>3. Fast and Efficient (លឿន និងមានប្រសិទ្ធភាព)</h4>
+<p>C ត្រូវបាន compile ទៅជា machine code ដោយផ្ទាល់ ធ្វើឱ្យវាមានល្បឿនលឿនខ្លាំង។ Programs មានទំហំតូច និងប្រើ memory បានប្រសិទ្ធភាព។</p>
+
+<h4>4. Portability (ភាពអាចប្តូរ platform)</h4>
+<p>កូដ C ដែលសរសេរនៅ platform មួយ អាចដំណើរការលើ platforms ផ្សេងៗ ដោយ recompile ម្ដងទៀតប៉ុណ្ណោះ។</p>
+
+<h4>5. Rich Library (Library សម្បូរ)</h4>
+<p>C Standard Library (libc) ផ្ដល់ functions ជាច្រើន ដូចជា I/O, string manipulation, math operations, memory management, etc.</p>
+
+<h4>6. Middle-Level Language</h4>
+<p>C ស្ថិតនៅចន្លោះ low-level languages (Assembly) និង high-level languages (Python, Java)។ វាអាចធ្វើ low-level operations ដូច assembly ប៉ុន្តែក៏ងាយ program ដូច high-level languages ផងដែរ។</p>
+
+<h2>1.3 History of C <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p><strong>Dennis Ritchie</strong> បានបង្កើត C នៅ Bell Labs ក្នុងអំឡុងពេល 1969-1973 ក្នុងបំណងសរសេរ UNIX operating system។</p>
+<ul>
+    <li><strong>1969-1972:</strong> ចាប់ផ្ដើម develop C ដោយ Dennis Ritchie</li>
+    <li><strong>1972:</strong> C ចាប់ផ្ដើម official</li>
+    <li><strong>1978:</strong> "The C Programming Language" ដោយ Kernighan & Ritchie (K&R C)</li>
+    <li><strong>1989:</strong> ANSI C (C89) - ស្ដង់ដារ ANSI ដំបូង</li>
+    <li><strong>1990:</strong> ISO C (C90) - ទទួលស្គាល់ដោយ ISO</li>
+    <li><strong>1999:</strong> C99 - ភ្ជាប់ features ថ្មីៗ</li>
+    <li><strong>2011:</strong> C11 - ភ្ជាប់ multithreading support</li>
+    <li><strong>2018:</strong> C17/C18 - bug fixes and clarifications</li>
+    <li><strong>2023:</strong> C23 - version ចុងក្រោយ</li>
+</ul>
+
+<h2>1.4 Structure of a C Program <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>មុនពេលចូលសិក្សាលម្អិត សូមមើលកម្មវិធី C ដំបូង (Hello World):</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+
+<p>ពន្យល់ផ្នែកនីមួយៗ៖</p>
+
+<h3>1.4.1 #include &lt;stdio.h&gt;</h3>
+<p><code>#include</code> គឺជា preprocessor directive ដែលប្រាប់ compiler ឱ្យ include header file មួយ។ <code>stdio.h</code> (Standard Input/Output) ផ្ដល់ functions ដូចជា <code>printf()</code> និង <code>scanf()</code>។</p>
+
+<p>Header files ដែលប្រើជាញឹកញាប់ក្នុង C:</p>
+<pre><code>#include &lt;stdio.h&gt;    // printf, scanf, file operations
+#include &lt;stdlib.h&gt;   // malloc, free, exit, rand
+#include &lt;string.h&gt;   // strlen, strcpy, strcmp
+#include &lt;math.h&gt;     // sqrt, pow, sin, cos
+#include &lt;ctype.h&gt;    // isdigit, isalpha, toupper
+#include &lt;time.h&gt;     // time, clock</code></pre>
+
+<div class="note">
+    <strong>ភាពខុសគ្នារវាង C និង C++:</strong> C ប្រើ <code>&lt;stdio.h&gt;</code> ចំណែក C++ ប្រើ <code>&lt;iostream&gt;</code>។ ក្នុង C គ្មាន <code>cout</code> ឬ <code>cin</code> ទេ គឺប្រើ <code>printf()</code> និង <code>scanf()</code> ជំនួស។
+</div>
+
+<h3>1.4.2 Header Files ក្នុង C</h3>
+<p>Header files មាន 2 ប្រភេទ:</p>
+<ul>
+    <li><strong>Standard Library Headers:</strong> ប្រើ <code>&lt; &gt;</code> ដូចជា <code>&lt;stdio.h&gt;</code></li>
+    <li><strong>User-defined Headers:</strong> ប្រើ <code>" "</code> ដូចជា <code>"myheader.h"</code></li>
+</ul>
+
+<h3>1.4.3 main() Function</h3>
+<p><code>int main()</code> ជា entry point (ចំណុចចូល) នៃរាល់កម្មវិធី C ទាំងអស់។ Execution ចាប់ផ្ដើមពី function នេះ។</p>
+<ul>
+    <li><code>int</code> - return type (main return integer ទៅ OS)</li>
+    <li><code>main</code> - ឈ្មោះ function (ត្រូវតែជា main)</li>
+    <li><code>{ }</code> - function body (ខ្លួន function)</li>
+</ul>
+
+<h3>1.4.4 printf() Function</h3>
+<p><code>printf()</code> (print formatted) ប្រើសម្រាប់បង្ហាញ output លើ screen។ ខុសពី C++ ដែលប្រើ <code>cout</code>។</p>
+<pre><code>printf("Hello, World!\n");   // \n = newline character</code></pre>
+
+<h3>1.4.5 return 0;</h3>
+<p><code>return 0;</code> ប្រាប់ OS ថាកម្មវិធីបានបញ្ចប់ដោយជោគជ័យ។</p>
+<ul>
+    <li><code>return 0;</code> - ជោគជ័យ (Success)</li>
+    <li><code>return 1;</code> ឬ number ផ្សេង - មានបញ្ហា (Error)</li>
+</ul>
+
+<h2>1.5 Basic Syntax Rules <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h3>1.5.1 Semicolon (;)</h3>
+<p>រាល់ statement ក្នុង C ត្រូវបញ្ចប់ដោយ semicolon (;)។</p>
+<pre><code>int x = 10;          // ត្រឹមត្រូវ
+printf("Hello");     // ត្រឹមត្រូវ
+int y = 20           // ERROR - ខ្វះ semicolon</code></pre>
+
+<h3>1.5.2 Case Sensitivity</h3>
+<p>C មានលក្ខណៈ case-sensitive ។ <code>Main</code>, <code>main</code>, <code>MAIN</code> ខុសគ្នាទាំងស្រុង។</p>
+<pre><code>int Number = 10;   // Variable ឈ្មោះ Number
+int number = 20;   // Variable ឈ្មោះ number (ខុសពី Number)
+int NUMBER = 30;   // Variable ឈ្មោះ NUMBER</code></pre>
+
+<h3>1.5.3 Comments</h3>
+<p>Comments គឺជាអត្ថបទដែល compiler មិនប្រតិបត្តិ ប្រើសម្រាប់ពន្យល់កូដ:</p>
+<pre><code>// Single-line comment (C99 and later)
+/* Multi-line comment
+   C ប្រើ comment ប្រភេទនេះ
+   ពី version ដំបូង */
+
+int x = 10;   /* comment ក្នុងបន្ទាត់ */</code></pre>
+
+<div class="important">
+    <strong>សំខាន់:</strong> C89/C90 ដំបូង គាំទ្រតែ <code>/* */</code> ប៉ុណ្ណោះ។ <code>//</code> ត្រូវបានបន្ថែមក្នុង C99។ ក្នុង compiler ចាស់ <code>//</code> អាចបង្ករបញ្ហា។
+</div>
+
+<h3>1.5.4 Curly Braces { }</h3>
+<p>Curly braces ប្រើដើម្បីកំណត់ block នៃកូដ ដូចជា function body, if block, loop block:</p>
+<pre><code>int main() {
+    // Code block សម្រាប់ main function
+    if (1 == 1) {
+        // Code block សម្រាប់ if statement
+        printf("True!");
+    }
+    return 0;
+}</code></pre>
+
+<h2>1.6 Compilation Process <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>ដំណើរការ compile កូដ C មាន 4 ជំហាន:</p>
+
+<h3>ជំហានទី 1: Preprocessing</h3>
+<p>Preprocessor ដំណើរការ <code>#include</code>, <code>#define</code>។ វារួម include header files ហើយ expand macros។</p>
+
+<h3>ជំហានទី 2: Compilation</h3>
+<p>Compiler បម្លែង C code ទៅជា Assembly code ហើយពិនិត្យ syntax errors។</p>
+
+<h3>ជំហានទី 3: Assembly</h3>
+<p>Assembler បម្លែង Assembly code ទៅជា machine code (object files .o)។</p>
+
+<h3>ជំហានទី 4: Linking</h3>
+<p>Linker បញ្ចូល object files និង library files ដើម្បីបង្កើត executable file។</p>
+
+<p><strong>Compilation Flow:</strong></p>
+<p style="font-family:'Courier New',monospace;font-size:13px;margin:10px 0 18px;">
+    Source (.c) &nbsp;→&nbsp; Preprocessor &nbsp;→&nbsp; Compiler &nbsp;→&nbsp; Assembler &nbsp;→&nbsp; Linker &nbsp;→&nbsp; Executable
+</p>
+
+<h3>Commands ដើម្បី Compile:</h3>
+<pre><code>/* Linux / Mac */
+gcc myprogram.c -o myprogram
+./myprogram
+
+/* Windows (MinGW) */
+gcc myprogram.c -o myprogram.exe
+myprogram.exe
+
+/* Compile ជាមួយ math library */
+gcc myprogram.c -o myprogram -lm</code></pre>
+
+<div class="tip">
+    <strong>ដំបូន្មាន:</strong> ប្រើ flag <code>-Wall</code> ដើម្បីឱ្យ compiler បង្ហាញ warnings ទាំងអស់: <code>gcc -Wall myprogram.c -o myprogram</code>
+</div>
+
+<h2>1.7 Variables & Data Types <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h3>1.7.1 Variables (អថេរ)</h3>
+<p>Variable ជាទីតាំងក្នុង memory ប្រើរក្សាទុកទិន្នន័យ។ ក្នុង C ត្រូវប្រកាស variable មុន ហើយទើបប្រើ។</p>
+
+<p><strong>Declaration (ប្រកាស):</strong></p>
+<pre><code>int age;           /* ប្រកាស variable ប្រភេទ int */
+float salary;      /* ប្រកាស variable ប្រភេទ float */
+char grade;        /* ប្រកាស variable ប្រភេទ char */</code></pre>
+
+<p><strong>Initialization (ប្រកាស + ផ្ដល់តម្លៃ):</strong></p>
+<pre><code>int age = 25;
+float salary = 1500.50;
+char grade = 'A';</code></pre>
+
+<p><strong>ប្រកាស variables ច្រើននៅក្នុងមួយបន្ទាត់:</strong></p>
+<pre><code>int x = 10, y = 20, z = 30;
+float a, b, c = 3.14f;</code></pre>
+
+<div class="important">
+    <strong>ខុសពី C++:</strong> C89/C90 តម្រូវឱ្យប្រកាស variables ទាំងអស់ <strong>នៅដើម function</strong> មុនពេល statements ផ្សេង។ C99 ឡើងទៅ អាចប្រកាស variables នៅគ្រប់ទីកន្លែង (ដូច C++)។
+</div>
+
+<h3>1.7.2 Data Types ក្នុង C</h3>
+
+<h4>1. Integer Types (ប្រភេទចំនួនគត់)</h4>
+<table>
+    <tr><th>Type</th><th>Size</th><th>Range</th><th>Example</th></tr>
+    <tr><td>int</td><td>4 bytes</td><td>-2,147,483,648 to 2,147,483,647</td><td>int age = 25;</td></tr>
+    <tr><td>short</td><td>2 bytes</td><td>-32,768 to 32,767</td><td>short count = 100;</td></tr>
+    <tr><td>long</td><td>4/8 bytes</td><td>varies by platform</td><td>long pop = 15000000;</td></tr>
+    <tr><td>long long</td><td>8 bytes</td><td>-9.2×10¹⁸ to 9.2×10¹⁸</td><td>long long big = 9876543210;</td></tr>
+    <tr><td>unsigned int</td><td>4 bytes</td><td>0 to 4,294,967,295</td><td>unsigned int u = 100;</td></tr>
+</table>
+
+<h4>2. Floating-Point Types (ប្រភេទទសភាគ)</h4>
+<table>
+    <tr><th>Type</th><th>Size</th><th>Precision</th><th>Example</th></tr>
+    <tr><td>float</td><td>4 bytes</td><td>~7 digits</td><td>float price = 19.99f;</td></tr>
+    <tr><td>double</td><td>8 bytes</td><td>~15 digits</td><td>double pi = 3.14159265359;</td></tr>
+    <tr><td>long double</td><td>12-16 bytes</td><td>~19 digits</td><td>long double x = 3.14L;</td></tr>
+</table>
+
+<h4>3. Character Type</h4>
+<table>
+    <tr><th>Type</th><th>Size</th><th>Range</th><th>Example</th></tr>
+    <tr><td>char</td><td>1 byte</td><td>-128 to 127</td><td>char letter = 'A';</td></tr>
+    <tr><td>unsigned char</td><td>1 byte</td><td>0 to 255</td><td>unsigned char c = 200;</td></tr>
+</table>
+
+<div class="note">
+    <strong>សម្គាល់:</strong> C មិនមាន <code>bool</code> type (true/false) ក្នុង C89 ទេ។ C99 បន្ថែម <code>&lt;stdbool.h&gt;</code> ដែលផ្ដល់ <code>bool</code>, <code>true</code>, <code>false</code>។ ក្នុង C89 គេប្រើ <code>int</code> ជំនួស (0 = false, non-zero = true)។
+</div>
+
+<h3>1.7.3 Format Specifiers ក្នុង printf/scanf</h3>
+<p>C ប្រើ format specifiers ដើម្បីកំណត់ប្រភេទទិន្នន័យដែលបង្ហាញ ឬ input:</p>
+<table>
+    <tr><th>Specifier</th><th>Type</th><th>Example</th></tr>
+    <tr><td>%d</td><td>int (decimal)</td><td>printf("%d", 42);</td></tr>
+    <tr><td>%i</td><td>int (integer)</td><td>printf("%i", 42);</td></tr>
+    <tr><td>%f</td><td>float/double</td><td>printf("%f", 3.14);</td></tr>
+    <tr><td>%lf</td><td>double (scanf)</td><td>scanf("%lf", &x);</td></tr>
+    <tr><td>%c</td><td>char</td><td>printf("%c", 'A');</td></tr>
+    <tr><td>%s</td><td>string (char array)</td><td>printf("%s", name);</td></tr>
+    <tr><td>%ld</td><td>long</td><td>printf("%ld", 100L);</td></tr>
+    <tr><td>%lld</td><td>long long</td><td>printf("%lld", 100LL);</td></tr>
+    <tr><td>%u</td><td>unsigned int</td><td>printf("%u", 100u);</td></tr>
+    <tr><td>%o</td><td>octal</td><td>printf("%o", 8);</td></tr>
+    <tr><td>%x</td><td>hexadecimal</td><td>printf("%x", 255);</td></tr>
+    <tr><td>%p</td><td>pointer address</td><td>printf("%p", ptr);</td></tr>
+    <tr><td>%%</td><td>percent sign</td><td>printf("100%%");</td></tr>
+</table>
+
+<h2>1.8 Input / Output (printf / scanf) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h3>1.8.1 Output with printf()</h3>
+<p><code>printf()</code> (print formatted) ប្រើបង្ហាញ output ។</p>
+<p><strong>Syntax:</strong></p>
+<pre><code>printf("format string", variable1, variable2, ...);</code></pre>
+
+<p><strong>ឧទាហរណ៍:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 20;
+    float score = 95.5;
+    char grade = 'A';
+
+    printf("Hello, World!\n");
+    printf("Age: %d\n", age);
+    printf("Score: %.2f\n", score);    /* .2 = 2 decimal places */
+    printf("Grade: %c\n", grade);
+    printf("Age: %d, Score: %.2f, Grade: %c\n", age, score, grade);
+
+    return 0;
+}</code></pre>
+
+<p><strong>Escape Sequences (តួអក្សរពិសេស):</strong></p>
+<table>
+    <tr><th>Sequence</th><th>Description</th></tr>
+    <tr><td>\n</td><td>Newline (ចុះបន្ទាត់)</td></tr>
+    <tr><td>\t</td><td>Tab (ចន្លោះ Tab)</td></tr>
+    <tr><td>\r</td><td>Carriage Return</td></tr>
+    <tr><td>\\</td><td>Backslash</td></tr>
+    <tr><td>\"</td><td>Double Quote</td></tr>
+    <tr><td>\'</td><td>Single Quote</td></tr>
+    <tr><td>\0</td><td>Null character</td></tr>
+</table>
+
+<h3>1.8.2 Input with scanf()</h3>
+<p><code>scanf()</code> (scan formatted) ប្រើទទួល input ពីអ្នកប្រើប្រាស់។</p>
+<p><strong>Syntax:</strong></p>
+<pre><code>scanf("format string", &variable1, &variable2, ...);</code></pre>
+
+<div class="important">
+    <strong>សំខាន់ណាស់:</strong> ក្នុង <code>scanf()</code> ត្រូវដាក់ <code>&</code> (address-of operator) មុន variable name ។ ដូចជា <code>scanf("%d", &age);</code> មិនមែន <code>scanf("%d", age);</code>
+</div>
+
+<p><strong>ឧទាហរណ៍:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    float height;
+    char initial;
+
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    printf("Enter your height (m): ");
+    scanf("%f", &height);
+
+    printf("Enter your initial: ");
+    scanf(" %c", &initial);   /* space before %c ដើម្បីរំលង whitespace */
+
+    printf("\n--- Your Information ---\n");
+    printf("Age: %d years\n", age);
+    printf("Height: %.2f m\n", height);
+    printf("Initial: %c\n", initial);
+
+    return 0;
+}</code></pre>
+
+<p><strong>Input ច្រើន variables ក្នុងមួយ scanf:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int day, month, year;
+
+    printf("Enter date (day month year): ");
+    scanf("%d %d %d", &day, &month, &year);
+
+    printf("Date: %02d/%02d/%d\n", day, month, year);
+    /* %02d = បង្ហាញ 2 ខ្ទង់ ប្រសិនបើ 1 ខ្ទង់ ដាក់ 0 ទៅមុខ */
+
+    return 0;
+}</code></pre>
+
+<h3>1.8.3 Naming Rules for Variables</h3>
+<ul>
+    <li>ត្រូវចាប់ផ្ដើមដោយអក្សរ (a-z, A-Z) ឬ underscore (_)</li>
+    <li>អាចមានអក្សរ, លេខ (0-9), underscore ប៉ុណ្ណោះ</li>
+    <li>មិនអាចប្រើ keywords (int, if, for, while, return...)</li>
+    <li>Case-sensitive (myVar ≠ MyVar ≠ MYVAR)</li>
+</ul>
+
+<pre><code>/* ឈ្មោះត្រឹមត្រូវ */
+int studentAge;
+float _price;
+int count123;
+
+/* ឈ្មោះមិនត្រឹមត្រូវ */
+int 123count;       /* ERROR - ចាប់ផ្ដើមដោយលេខ */
+float my-price;     /* ERROR - មាន hyphen */
+int for;            /* ERROR - keyword */</code></pre>
+
+<h3>ឧទាហរណ៍ពេញលេញ - Student Information:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    /* ប្រកាស variables */
+    char name[50];
+    int age;
+    float score;
+    char grade;
+
+    /* Input */
+    printf("===== Student Information =====\n");
+    printf("Enter student name: ");
+    scanf("%s", name);
+
+    printf("Enter student age: ");
+    scanf("%d", &age);
+
+    printf("Enter student score: ");
+    scanf("%f", &score);
+
+    printf("Enter student grade (A/B/C/D/F): ");
+    scanf(" %c", &grade);
+
+    /* Output */
+    printf("\n===== Student Report =====\n");
+    printf("Name  : %s\n", name);
+    printf("Age   : %d years old\n", age);
+    printf("Score : %.2f\n", score);
+    printf("Grade : %c\n", grade);
+
+    return 0;
+}</code></pre>
+
+<div class="exercise">
+    <h4>លំហាត់ប្រចាំមេរៀនទី 1 - Introduction to C</h4>
+    <p><strong>Exercise 1:</strong> សរសេរកម្មវិធី C ដែលបង្ហាញឈ្មោះ, អាយុ, និងអាសយដ្ឋានរបស់អ្នក។</p>
+    <p><strong>Exercise 2:</strong> បង្កើតកម្មវិធីប្រកាស variables សម្រាប់: ឈ្មោះ (string), អាយុ (int), កម្ពស់ (float), ទម្ងន់ (float) ហើយបង្ហាញ។</p>
+    <p><strong>Exercise 3:</strong> សរសេរកម្មវិធីសួរឈ្មោះ និងអាយុ ហើយបង្ហាញ "Hello [name], you are [age] years old!"</p>
+    <p><strong>Exercise 4:</strong> បង្កើតកម្មវិធីទទួល 2 ចំនួន integer ហើយបង្ហាញ ផលបូក, ផលដក, ផលគុណ, ផលចែក។</p>
+    <p><strong>Exercise 5:</strong> សរសេរកម្មវិធីគណនា BMI = weight(kg) / (height(m) × height(m))។</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== CHAPTER 2 ==================== -->
+<h1>❖ 2. Operators & Expressions in C</h1>
+
+<h2>2.1 What are Operators? <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Operators គឺជានិមិត្តសញ្ញាពិសេស ដែលប្រាប់ compiler ឱ្យធ្វើប្រមាណវិធីលើ operands។ Expression គឺជាបន្សំ variables, values, operators ដែលផ្ដល់លទ្ធផល (value) មួយ។</p>
+
+<pre><code>int result = 10 + 5;
+/* + = operator
+   10 និង 5 = operands
+   10 + 5 = expression
+   result = variable ដែលទទួល value */</code></pre>
+
+<h2>2.2 #define - Constants <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>ក្នុង C គេប្រើ <code>#define</code> (preprocessor macro) ដើម្បីកំណត់ constants ។ C99 ក៏អនុញ្ញាតឱ្យប្រើ <code>const</code> ក្នុង C++ style ផងដែរ។</p>
+
+<p><strong>Syntax:</strong></p>
+<pre><code>#define NAME value</code></pre>
+
+<p><strong>ឧទាហរណ៍:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+#define PI 3.14159
+#define MAX_SIZE 100
+#define SCHOOL "ABC High School"
+#define DAYS_IN_WEEK 7
+
+int main() {
+    printf("PI = %f\n", PI);
+    printf("Max Size = %d\n", MAX_SIZE);
+    printf("School: %s\n", SCHOOL);
+    printf("Days in week: %d\n", DAYS_IN_WEEK);
+
+    /* PI = 3.14;  // ERROR - cannot modify #define */
+
+    /* C99 style - const */
+    const double gravity = 9.81;
+    printf("Gravity: %.2f m/s2\n", gravity);
+
+    return 0;
+}</code></pre>
+
+<div class="note">
+    <strong>ភាពខុសគ្នា #define vs const:</strong>
+    <ul>
+        <li><code>#define</code> - preprocessor macro, replacement ពីមុន compile, គ្មាន type checking</li>
+        <li><code>const</code> - variable ពិតប្រាកដ, មាន type, type-safe, debuggable</li>
+        <li>C89/C90 ប្រើ <code>#define</code> ជាញឹកញាប់ ព្រោះ <code>const</code> ក្នុង C89 មិនស្មើ compile-time constant</li>
+    </ul>
+</div>
+
+<h2>2.3 Arithmetic Operators (សញ្ញាគណិត) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<table>
+    <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+    <tr><td>+</td><td>Addition (ផលបូក)</td><td>10 + 5</td><td>15</td></tr>
+    <tr><td>-</td><td>Subtraction (ផលដក)</td><td>10 - 5</td><td>5</td></tr>
+    <tr><td>*</td><td>Multiplication (ផលគុណ)</td><td>10 * 5</td><td>50</td></tr>
+    <tr><td>/</td><td>Division (ផលចែក)</td><td>10 / 5</td><td>2</td></tr>
+    <tr><td>%</td><td>Modulus (នៃសល់)</td><td>10 % 3</td><td>1</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 20, b = 6;
+
+    printf("a + b = %d\n", a + b);   /* 26 */
+    printf("a - b = %d\n", a - b);   /* 14 */
+    printf("a * b = %d\n", a * b);   /* 120 */
+    printf("a / b = %d\n", a / b);   /* 3 (integer division!) */
+    printf("a %% b = %d\n", a % b);  /* 2 (remainder) */
+
+    /* Division ជាមួយ floating-point */
+    float x = 20.0, y = 6.0;
+    printf("x / y = %.4f\n", x / y); /* 3.3333 */
+
+    return 0;
+}</code></pre>
+
+<div class="important">
+    <strong>Integer Division:</strong> ការចែក integers ២ ផ្ដល់ integer result (កាត់ decimal)។ <code>7 / 2 = 3</code> មិនមែន <code>3.5</code> ។ ប្រើ <code>(float)7 / 2</code> (type casting) ដើម្បីទទួល <code>3.5</code>។
+</div>
+
+<h2>2.4 Assignment Operators <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<table>
+    <tr><th>Operator</th><th>Example</th><th>Equivalent</th></tr>
+    <tr><td>=</td><td>x = 5</td><td>x = 5</td></tr>
+    <tr><td>+=</td><td>x += 3</td><td>x = x + 3</td></tr>
+    <tr><td>-=</td><td>x -= 3</td><td>x = x - 3</td></tr>
+    <tr><td>*=</td><td>x *= 3</td><td>x = x * 3</td></tr>
+    <tr><td>/=</td><td>x /= 3</td><td>x = x / 3</td></tr>
+    <tr><td>%=</td><td>x %= 3</td><td>x = x % 3</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int x = 10;
+    printf("Initial: x = %d\n", x);
+
+    x += 5;
+    printf("After x += 5: x = %d\n", x);   /* 15 */
+
+    x -= 3;
+    printf("After x -= 3: x = %d\n", x);   /* 12 */
+
+    x *= 2;
+    printf("After x *= 2: x = %d\n", x);   /* 24 */
+
+    x /= 4;
+    printf("After x /= 4: x = %d\n", x);   /* 6 */
+
+    x %= 4;
+    printf("After x %%= 4: x = %d\n", x);  /* 2 */
+
+    return 0;
+}</code></pre>
+
+<h2>2.5 Comparison Operators <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Comparison operators ប្រើប្រៀបធៀប 2 តម្លៃ ហើយ return 1 (true) ឬ 0 (false)។</p>
+<table>
+    <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+    <tr><td>==</td><td>Equal to</td><td>5 == 5</td><td>1 (true)</td></tr>
+    <tr><td>!=</td><td>Not equal to</td><td>5 != 3</td><td>1 (true)</td></tr>
+    <tr><td>&gt;</td><td>Greater than</td><td>5 &gt; 3</td><td>1 (true)</td></tr>
+    <tr><td>&lt;</td><td>Less than</td><td>5 &lt; 3</td><td>0 (false)</td></tr>
+    <tr><td>&gt;=</td><td>Greater or equal</td><td>5 &gt;= 5</td><td>1 (true)</td></tr>
+    <tr><td>&lt;=</td><td>Less or equal</td><td>5 &lt;= 3</td><td>0 (false)</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10, b = 20;
+    printf("a = %d, b = %d\n", a, b);
+    printf("a == b : %d\n", a == b);  /* 0 */
+    printf("a != b : %d\n", a != b);  /* 1 */
+    printf("a > b  : %d\n", a > b);   /* 0 */
+    printf("a < b  : %d\n", a < b);   /* 1 */
+    printf("a >= b : %d\n", a >= b);  /* 0 */
+    printf("a <= b : %d\n", a <= b);  /* 1 */
+    return 0;
+}</code></pre>
+
+<div class="important">
+    <strong>កុំច្រឡំ!</strong> <code>==</code> (ប្រៀបធៀប) ≠ <code>=</code> (ផ្ដល់តម្លៃ)។ <code>if (x = 5)</code> គឺ bug ព្រោះ assign 5 ទៅ x ហើយ always true!
+</div>
+
+<h2>2.6 Logical Operators <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<table>
+    <tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th><th>Result</th></tr>
+    <tr><td>&amp;&amp;</td><td>AND</td><td>ពិត ប្រសិនបើទាំងពីរពិត</td><td>1 &amp;&amp; 0</td><td>0</td></tr>
+    <tr><td>||</td><td>OR</td><td>ពិត ប្រសិនបើមួយណាពិត</td><td>1 || 0</td><td>1</td></tr>
+    <tr><td>!</td><td>NOT</td><td>បញ្ច្រាស់តម្លៃ</td><td>!1</td><td>0</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 20;
+    int hasID = 1;   /* 1 = true, 0 = false ក្នុង C */
+
+    /* AND - ទាំងពីរត្រូវ true */
+    if (age >= 18 && hasID) {
+        printf("You can enter!\n");
+    }
+
+    /* OR - មួយណាពិត */
+    int isWeekend = 0;
+    int isHoliday = 1;
+    if (isWeekend || isHoliday) {
+        printf("Day off!\n");
+    }
+
+    /* NOT */
+    int isRaining = 0;
+    if (!isRaining) {
+        printf("Go outside!\n");
+    }
+
+    /* Short-circuit evaluation */
+    int x = 0;
+    if (x != 0 && 10/x > 2) {  /* 10/x មិន evaluate ប្រសិនបើ x==0 */
+        printf("Safe!\n");
+    }
+
+    return 0;
+}</code></pre>
+
+<h2>2.7 Increment & Decrement Operators <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<table>
+    <tr><th>Operator</th><th>Name</th><th>Description</th></tr>
+    <tr><td>++x</td><td>Pre-increment</td><td>បន្ថែមមុន ហើយប្រើ</td></tr>
+    <tr><td>x++</td><td>Post-increment</td><td>ប្រើមុន ហើយបន្ថែម</td></tr>
+    <tr><td>--x</td><td>Pre-decrement</td><td>ដកមុន ហើយប្រើ</td></tr>
+    <tr><td>x--</td><td>Post-decrement</td><td>ប្រើមុន ហើយដក</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 5, b = 5;
+
+    /* Pre-increment: increment before use */
+    printf("++a = %d\n", ++a);  /* print 6, a = 6 */
+    printf("a = %d\n", a);      /* a = 6 */
+
+    /* Post-increment: use then increment */
+    printf("b++ = %d\n", b++);  /* print 5, b = 6 */
+    printf("b = %d\n", b);      /* b = 6 */
+
+    int x = 5;
+    int y = ++x;  /* x = 6, y = 6 */
+
+    int p = 5;
+    int q = p++;  /* p = 6, q = 5 */
+
+    printf("x=%d, y=%d\n", x, y);
+    printf("p=%d, q=%d\n", p, q);
+
+    return 0;
+}</code></pre>
+
+<h2>2.8 Bitwise Operators (ប្រមាណ Bit) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>C ប្រើ bitwise operators ដែលធ្វើការលើ bits ដោយផ្ទាល់ ។ នេះជាលក្ខណៈពិសេសរបស់ C ដែល high-level languages ជាច្រើនពុំមាន:</p>
+<table>
+    <tr><th>Operator</th><th>Name</th><th>Example (a=5, b=3)</th><th>Result</th></tr>
+    <tr><td>&amp;</td><td>Bitwise AND</td><td>5 &amp; 3 (0101 &amp; 0011)</td><td>1 (0001)</td></tr>
+    <tr><td>|</td><td>Bitwise OR</td><td>5 | 3 (0101 | 0011)</td><td>7 (0111)</td></tr>
+    <tr><td>^</td><td>Bitwise XOR</td><td>5 ^ 3 (0101 ^ 0011)</td><td>6 (0110)</td></tr>
+    <tr><td>~</td><td>Bitwise NOT</td><td>~5</td><td>-6</td></tr>
+    <tr><td>&lt;&lt;</td><td>Left Shift</td><td>5 &lt;&lt; 1</td><td>10</td></tr>
+    <tr><td>&gt;&gt;</td><td>Right Shift</td><td>5 &gt;&gt; 1</td><td>2</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 5;   /* binary: 00000101 */
+    int b = 3;   /* binary: 00000011 */
+
+    printf("a & b  = %d\n", a & b);   /* 1  (00000001) */
+    printf("a | b  = %d\n", a | b);   /* 7  (00000111) */
+    printf("a ^ b  = %d\n", a ^ b);   /* 6  (00000110) */
+    printf("~a     = %d\n", ~a);      /* -6 */
+    printf("a << 1 = %d\n", a << 1);  /* 10 (គុណ 2) */
+    printf("a >> 1 = %d\n", a >> 1);  /* 2  (ចែក 2) */
+
+    return 0;
+}</code></pre>
+
+<h2>2.9 Type Casting (បម្លែងប្រភេទ) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Type casting ជាការបម្លែង variable ពីប្រភេទមួយទៅប្រភេទផ្សេង:</p>
+
+<p><strong>Implicit Casting (ស្វ័យប្រវត្ត):</strong></p>
+<pre><code>int x = 10;
+float y = x;    /* int → float ស្វ័យប្រវត្ត */
+printf("%f\n", y); /* 10.000000 */</code></pre>
+
+<p><strong>Explicit Casting (ដោយប្រើ cast operator):</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 7, b = 2;
+
+    /* Without cast - integer division */
+    printf("7 / 2 = %d\n", a / b);           /* 3 */
+
+    /* With cast - float division */
+    printf("7 / 2 = %.2f\n", (float)a / b);  /* 3.50 */
+    printf("7 / 2 = %.2f\n", (double)a / b); /* 3.50 */
+
+    /* Cast float to int - cut decimal */
+    float pi = 3.14159;
+    int whole = (int)pi;
+    printf("(int)3.14159 = %d\n", whole);   /* 3 */
+
+    return 0;
+}</code></pre>
+
+<div class="exercise">
+    <h4>លំហាត់ប្រចាំមេរៀនទី 2 - Operators & Expressions</h4>
+    <p><strong>Exercise 1:</strong> សរសេរកម្មវិធីគណនា area និង perimeter នៃចតុកោណកែងពី length និង width ដែលអ្នកប្រើប្រាស់បញ្ចូល។</p>
+    <p><strong>Exercise 2:</strong> បង្កើតកម្មវិធីបម្លែងសីតុណ្ហភាព Celsius → Fahrenheit។ Formula: F = (C × 9/5) + 32</p>
+    <p><strong>Exercise 3:</strong> សរសេរកម្មវិធីពិនិត្យលេខគូ ឬ លេខសេស ដោយប្រើ modulus operator។</p>
+    <p><strong>Exercise 4:</strong> បង្កើតកម្មវិធីទទួល 3 លេខ ពិនិត្យថាលេខទី1 ស្ថិតរវាងលេខទី2 និង3 ដែរឬទេ (ប្រើ logical operators)។</p>
+    <p><strong>Exercise 5:</strong> សរសេរកម្មវិធីបង្ហាញ binary representation នៃ integer មួយ ដោយប្រើ bitwise operators។</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== CHAPTER 3 ==================== -->
+<h1>❖ 3. Mathematical Functions in C</h1>
+
+<h2>3.1 Header &lt;math.h&gt; <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>C ផ្ដល់ mathematical functions ក្នុង <code>&lt;math.h&gt;</code> header file ។ ខុសពី C++ ដែលប្រើ <code>&lt;cmath&gt;</code>។</p>
+
+<pre><code>#include &lt;math.h&gt;</code></pre>
+
+<div class="important">
+    <strong>សំខាន់ - Linking Math Library:</strong> ក្នុង Linux/Unix ត្រូវ link math library ក្នុង compile command:<br>
+    <code>gcc myprogram.c -o myprogram -lm</code><br>
+    Windows (MinGW) ជាធម្មតា link ដោយស្វ័យប្រវត្ត ប៉ុន្តែ Linux ត្រូវ explicit <code>-lm</code>។
+</div>
+
+<h2>3.2 Basic Mathematical Functions <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h3>3.2.1 sqrt() - Square Root</h3>
+<p>ផ្ដល់ square root (ការ៉េ) នៃ number។</p>
+<p><strong>Syntax:</strong> <code>double sqrt(double x)</code></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double numbers[] = {4, 9, 16, 25, 2};
+    int i;
+
+    for (i = 0; i &lt; 5; i++) {
+        printf("sqrt(%.0f) = %.4f\n", numbers[i], sqrt(numbers[i]));
+    }
+    /* Output:
+       sqrt(4)  = 2.0000
+       sqrt(9)  = 3.0000
+       sqrt(16) = 4.0000
+       sqrt(25) = 5.0000
+       sqrt(2)  = 1.4142 */
+
+    return 0;
+}</code></pre>
+
+<h3>3.2.2 pow() - Power (ស្វ័យគុណ)</h3>
+<p>គណនា x<sup>y</sup> (x raised to the power y)。</p>
+<p><strong>Syntax:</strong> <code>double pow(double x, double y)</code></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    printf("2^3   = %.0f\n", pow(2, 3));    /* 8 */
+    printf("5^2   = %.0f\n", pow(5, 2));    /* 25 */
+    printf("10^0  = %.0f\n", pow(10, 0));   /* 1 */
+    printf("4^0.5 = %.1f\n", pow(4, 0.5)); /* 2.0 (same as sqrt) */
+    printf("2^-1  = %.1f\n", pow(2, -1));  /* 0.5 */
+
+    return 0;
+}</code></pre>
+
+<h3>3.2.3 fabs() - Absolute Value (តម្លៃដាច់ខាត)</h3>
+<p>ផ្ដល់ absolute value (positive value) ។ ក្នុង C ប្រើ <code>fabs()</code> សម្រាប់ double, <code>abs()</code> ពី <code>&lt;stdlib.h&gt;</code> សម្រាប់ int។</p>
+<p><strong>Syntax:</strong> <code>double fabs(double x)</code></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;  /* for abs() */
+
+int main() {
+    int a = -10;
+    double b = -15.5;
+
+    printf("abs(%d)    = %d\n", a, abs(a));     /* 10 */
+    printf("fabs(%.1f) = %.1f\n", b, fabs(b));  /* 15.5 */
+
+    /* ចម្ងាយរវាង 2 ចំណុច */
+    int p1 = 5, p2 = -3;
+    printf("Distance: %d\n", abs(p1 - p2));   /* 8 */
+
+    return 0;
+}</code></pre>
+
+<h3>3.2.4 ceil() - Ceiling (បង្គត់ឡើង)</h3>
+<p><strong>Syntax:</strong> <code>double ceil(double x)</code></p>
+<pre><code>printf("ceil(4.2)  = %.0f\n", ceil(4.2));  /* 5 */
+printf("ceil(4.8)  = %.0f\n", ceil(4.8));  /* 5 */
+printf("ceil(-4.2) = %.0f\n", ceil(-4.2)); /* -4 */
+printf("ceil(5.0)  = %.0f\n", ceil(5.0));  /* 5 */</code></pre>
+
+<h3>3.2.5 floor() - Floor (បង្គត់ចុះ)</h3>
+<p><strong>Syntax:</strong> <code>double floor(double x)</code></p>
+<pre><code>printf("floor(4.2)  = %.0f\n", floor(4.2));  /* 4 */
+printf("floor(4.8)  = %.0f\n", floor(4.8));  /* 4 */
+printf("floor(-4.2) = %.0f\n", floor(-4.2)); /* -5 */
+printf("floor(5.0)  = %.0f\n", floor(5.0));  /* 5 */</code></pre>
+
+<h3>3.2.6 round() - Round (C99)</h3>
+<p><strong>Syntax:</strong> <code>double round(double x)</code> (C99 លើ)</p>
+<pre><code>printf("round(4.2)  = %.0f\n", round(4.2));  /* 4 */
+printf("round(4.5)  = %.0f\n", round(4.5));  /* 5 */
+printf("round(4.8)  = %.0f\n", round(4.8));  /* 5 */
+printf("round(-4.5) = %.0f\n", round(-4.5)); /* -5 */</code></pre>
+
+<div class="tip">
+    <strong>C89 មិនមាន round():</strong> ប្រើ <code>floor(x + 0.5)</code> ជំនួសសម្រាប់ positive numbers ក្នុង C89។
+</div>
+
+<h3>ឧទាហរណ៍ - Math Functions Calculator:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double num;
+
+    printf("Enter a number: ");
+    scanf("%lf", &num);
+
+    printf("\n===== Math Functions Results =====\n");
+    printf("Original  : %.4f\n", num);
+    printf("sqrt      : %.4f\n", sqrt(num));
+    printf("num^2     : %.4f\n", pow(num, 2));
+    printf("num^3     : %.4f\n", pow(num, 3));
+    printf("fabs      : %.4f\n", fabs(num));
+    printf("ceil      : %.0f\n", ceil(num));
+    printf("floor     : %.0f\n", floor(num));
+    printf("round     : %.0f\n", round(num));
+
+    return 0;
+}</code></pre>
+
+<h2>3.3 Trigonometric Functions <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>អនុគមន៍ Trigonometric ប្រើ radians (មិនមែន degrees)!</p>
+
+<div class="important">
+    <strong>រូបមន្ត conversion:</strong><br>
+    radians = degrees × π / 180<br>
+    degrees = radians × 180 / π
+</div>
+
+<h3>sin(), cos(), tan():</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.14159265359
+
+int main() {
+    double degrees, radians;
+
+    printf("Enter angle in degrees: ");
+    scanf("%lf", &degrees);
+
+    radians = degrees * PI / 180.0;
+
+    printf("\nAngle: %.2f degrees = %.4f radians\n", degrees, radians);
+    printf("sin(%.2f) = %.4f\n", degrees, sin(radians));
+    printf("cos(%.2f) = %.4f\n", degrees, cos(radians));
+    printf("tan(%.2f) = %.4f\n", degrees, tan(radians));
+
+    /* Inverse trig */
+    printf("\nasin(0.5) = %.2f degrees\n", asin(0.5) * 180.0 / PI);
+    printf("acos(0.5) = %.2f degrees\n", acos(0.5) * 180.0 / PI);
+    printf("atan(1.0) = %.2f degrees\n", atan(1.0) * 180.0 / PI);
+
+    return 0;
+}</code></pre>
+
+<h2>3.4 Exponential & Logarithmic Functions <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    /* Exponential */
+    printf("exp(0) = %.5f\n", exp(0));   /* 1.00000 */
+    printf("exp(1) = %.5f\n", exp(1));   /* 2.71828 (e) */
+    printf("exp(2) = %.5f\n", exp(2));   /* 7.38906 */
+
+    /* Natural log */
+    printf("log(1)  = %.5f\n", log(1));   /* 0 */
+    printf("log(M_E)= %.5f\n", log(exp(1))); /* 1 */
+
+    /* Log base 10 */
+    printf("log10(10)  = %.1f\n", log10(10));   /* 1.0 */
+    printf("log10(100) = %.1f\n", log10(100));  /* 2.0 */
+
+    /* log base 2 (C99) */
+    printf("log2(8) = %.1f\n", log2(8));  /* 3.0 */
+
+    return 0;
+}</code></pre>
+
+<h3>Summary Table - Math Functions:</h3>
+<table>
+    <tr><th>Function</th><th>Header</th><th>Description</th><th>Example → Result</th></tr>
+    <tr><td>sqrt(x)</td><td>math.h</td><td>ការ៉េ</td><td>sqrt(16) → 4</td></tr>
+    <tr><td>pow(x,y)</td><td>math.h</td><td>x^y</td><td>pow(2,3) → 8</td></tr>
+    <tr><td>abs(x)</td><td>stdlib.h</td><td>|x| (int)</td><td>abs(-5) → 5</td></tr>
+    <tr><td>fabs(x)</td><td>math.h</td><td>|x| (double)</td><td>fabs(-5.5) → 5.5</td></tr>
+    <tr><td>ceil(x)</td><td>math.h</td><td>បង្គត់ឡើង</td><td>ceil(4.2) → 5</td></tr>
+    <tr><td>floor(x)</td><td>math.h</td><td>បង្គត់ចុះ</td><td>floor(4.8) → 4</td></tr>
+    <tr><td>round(x)</td><td>math.h</td><td>បង្គត់ជិត (C99)</td><td>round(4.5) → 5</td></tr>
+    <tr><td>sin(x)</td><td>math.h</td><td>Sine (radians)</td><td>sin(0) → 0</td></tr>
+    <tr><td>cos(x)</td><td>math.h</td><td>Cosine (radians)</td><td>cos(0) → 1</td></tr>
+    <tr><td>tan(x)</td><td>math.h</td><td>Tangent (radians)</td><td>tan(0) → 0</td></tr>
+    <tr><td>exp(x)</td><td>math.h</td><td>e^x</td><td>exp(1) → 2.71828</td></tr>
+    <tr><td>log(x)</td><td>math.h</td><td>ln(x)</td><td>log(10) → 2.30259</td></tr>
+    <tr><td>log10(x)</td><td>math.h</td><td>log₁₀(x)</td><td>log10(100) → 2</td></tr>
+    <tr><td>log2(x)</td><td>math.h</td><td>log₂(x) (C99)</td><td>log2(8) → 3</td></tr>
+</table>
+
+<div class="exercise">
+    <h4>លំហាត់ប្រចាំមេរៀនទី 3 - Mathematical Functions</h4>
+    <p><strong>Exercise 1:</strong> សរសេរកម្មវិធីគណនា hypotenuse: c = √(a² + b²)</p>
+    <p><strong>Exercise 2:</strong> បង្កើតកម្មវិធីគណនា area = π×r² និង circumference = 2×π×r នៃរង្វង់។</p>
+    <p><strong>Exercise 3:</strong> សរសេរកម្មវិធីគណនាចម្ងាយ 2D: d = √((x₂-x₁)² + (y₂-y₁)²)</p>
+    <p><strong>Exercise 4:</strong> បង្កើតតារាង sin, cos, tan ពី 0° ដល់ 90° (រៀងរាល់ 15°)។</p>
+    <p><strong>Exercise 5:</strong> សរសេរ scientific calculator ដែលអនុញ្ញាតជ្រើស operation (sqrt, pow, sin, cos, log)។</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== CHAPTER 4 ==================== -->
+<h1>❖ 4. Control Structures in C</h1>
+
+<p>Control Structures គ្រប់គ្រង execution flow នៃ program។ ពួកវាមាន 3 ប្រភេទ: Sequence, Selection, Iteration។</p>
+
+<h2>4.1 Sequence Control Structure <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Sequence Control Structure ប្រតិបត្តិ statements តាមលំដាប់ ពីលើទៅក្រោម ។ ចុះបន្ទាត់ស្ដាំ = statement ត្រូវបញ្ចប់ទើបទៅ statement ក្រោយ។</p>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: Sequence Control Structure</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div class="fc-process">Statement 1</div>
+        <div class="fc-arrow"></div>
+        <div class="fc-process">Statement 2</div>
+        <div class="fc-arrow"></div>
+        <div class="fc-process">Statement 3</div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+    <p style="margin-top:12px;font-size:13px;">📌 ប្រតិបត្តិពីលើទៅក្រោម រហូតដល់ END</p>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    /* ប្រតិបត្តិតាមលំដាប់ */
+    double price, tax, total;
+
+    printf("Enter price: $");
+    scanf("%lf", &price);
+
+    tax = price * 0.10;       /* Statement 1 */
+    total = price + tax;       /* Statement 2 */
+
+    printf("Price : $%.2f\n", price);   /* Statement 3 */
+    printf("Tax   : $%.2f\n", tax);     /* Statement 4 */
+    printf("Total : $%.2f\n", total);   /* Statement 5 */
+
+    return 0;
+}</code></pre>
+
+<h2>4.2 Selection Control Structure <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Selection Control Structure (Decision/Conditional) ជ្រើសរើស execution path ផ្អែកលើ condition។</p>
+
+<h3>4.2.1 if Statement</h3>
+<p><strong>Syntax:</strong></p>
+<pre><code>if (condition) {
+    /* ប្រតិបត្តិ ប្រសិនបើ condition != 0 (true) */
+}</code></pre>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: if Statement</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div style="border:2px solid #000;padding:9px 20px;background:#f5f5f5;font-size:14px;min-width:160px;text-align:center;">◇ Condition?</div>
+        <div style="display:flex;width:320px;align-items:flex-start;justify-content:center;margin:0;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ TRUE</div>
+                <div class="fc-process">Execute Statement</div>
+                <div class="fc-arrow-sm"></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">FALSE ▶</div>
+                <div style="height:50px;"></div>
+            </div>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    if (age >= 18) {
+        printf("You are an adult.\n");
+        printf("You can vote!\n");
+    }
+
+    printf("Program ends.\n");
+    return 0;
+}</code></pre>
+
+<h3>4.2.2 if-else Statement</h3>
+<pre><code>if (condition) {
+    /* true block */
+} else {
+    /* false block */
+}</code></pre>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: if-else Statement</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div style="border:2px solid #000;padding:9px 20px;background:#f5f5f5;font-size:14px;min-width:160px;text-align:center;">◇ Condition?</div>
+        <div style="display:flex;width:380px;align-items:flex-start;justify-content:center;gap:10px;margin-top:0;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ TRUE</div>
+                <div class="fc-process">if block</div>
+                <div class="fc-arrow-sm"></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ FALSE</div>
+                <div class="fc-process">else block</div>
+                <div class="fc-arrow-sm"></div>
+            </div>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num % 2 == 0) {
+        printf("%d is EVEN\n", num);
+    } else {
+        printf("%d is ODD\n", num);
+    }
+
+    return 0;
+}</code></pre>
+
+<h3>4.2.3 if-else if-else Statement</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int score;
+    printf("Enter your score (0-100): ");
+    scanf("%d", &score);
+
+    if (score >= 90) {
+        printf("Grade: A (Excellent!)\n");
+    } else if (score >= 80) {
+        printf("Grade: B (Very Good)\n");
+    } else if (score >= 70) {
+        printf("Grade: C (Good)\n");
+    } else if (score >= 60) {
+        printf("Grade: D (Pass)\n");
+    } else {
+        printf("Grade: F (Fail)\n");
+    }
+
+    return 0;
+}</code></pre>
+
+<h3>4.2.4 Ternary Operator (? :)</h3>
+<p>C មាន ternary operator ដែលជា shortcut សម្រាប់ if-else ។</p>
+<p><strong>Syntax:</strong> <code>condition ? value_if_true : value_if_false</code></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10, b = 20;
+    int max;
+
+    max = (a > b) ? a : b;   /* if(a>b) max=a; else max=b; */
+    printf("Max = %d\n", max);   /* 20 */
+
+    int x = 5;
+    printf("%s\n", (x % 2 == 0) ? "Even" : "Odd");  /* Odd */
+
+    return 0;
+}</code></pre>
+
+<h3>4.2.5 switch Statement</h3>
+<p><code>switch</code> ពិនិត្យតម្លៃ integer/char ជាក់លាក់ ។</p>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: switch Statement</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div class="fc-process">switch (expression)</div>
+        <div class="fc-arrow"></div>
+        <div style="display:flex;width:520px;align-items:flex-start;justify-content:center;gap:6px;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div style="border:2px solid #000;padding:6px 8px;background:#f5f5f5;font-size:13px;text-align:center;min-width:80px;">◇ case 1?</div>
+                <div class="fc-label">▼</div>
+                <div class="fc-process" style="min-width:80px;font-size:12px;">Code 1</div>
+                <div class="fc-arrow-sm"></div>
+                <div style="border:2px solid #000;padding:4px 8px;font-size:11px;background:#eee;">break</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div style="border:2px solid #000;padding:6px 8px;background:#f5f5f5;font-size:13px;text-align:center;min-width:80px;">◇ case 2?</div>
+                <div class="fc-label">▼</div>
+                <div class="fc-process" style="min-width:80px;font-size:12px;">Code 2</div>
+                <div class="fc-arrow-sm"></div>
+                <div style="border:2px solid #000;padding:4px 8px;font-size:11px;background:#eee;">break</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div style="border:2px solid #000;padding:6px 8px;background:#f5f5f5;font-size:13px;text-align:center;min-width:80px;">default</div>
+                <div class="fc-label">▼</div>
+                <div class="fc-process" style="min-width:80px;font-size:12px;">Default</div>
+            </div>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int choice;
+    double a, b;
+
+    printf("===== Calculator =====\n");
+    printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
+    printf("Choice: ");
+    scanf("%d", &choice);
+
+    printf("Enter two numbers: ");
+    scanf("%lf %lf", &a, &b);
+
+    switch (choice) {
+        case 1:
+            printf("%.2f + %.2f = %.2f\n", a, b, a + b);
+            break;
+        case 2:
+            printf("%.2f - %.2f = %.2f\n", a, b, a - b);
+            break;
+        case 3:
+            printf("%.2f * %.2f = %.2f\n", a, b, a * b);
+            break;
+        case 4:
+            if (b != 0)
+                printf("%.2f / %.2f = %.2f\n", a, b, a / b);
+            else
+                printf("Error: Division by zero!\n");
+            break;
+        default:
+            printf("Invalid choice!\n");
+    }
+    return 0;
+}</code></pre>
+
+<h2>4.3 Iteration Control Structure (Loops) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h3>4.3.1 for Loop</h3>
+<p><strong>Syntax:</strong></p>
+<pre><code>for (initialization; condition; increment/decrement) {
+    /* body */
+}</code></pre>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: for Loop</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div class="fc-process">Initialization (i = 0)</div>
+        <div class="fc-arrow"></div>
+        <div style="border:2px solid #000;padding:9px 20px;background:#f5f5f5;font-size:14px;min-width:160px;text-align:center;">◇ Condition? (i &lt; n)</div>
+        <div style="display:flex;width:320px;align-items:flex-start;justify-content:center;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ TRUE</div>
+                <div class="fc-process">Loop Body</div>
+                <div class="fc-arrow-sm"></div>
+                <div class="fc-process">i++ (Increment)</div>
+                <div style="font-size:11px;color:#555;margin:4px 0;">↩ Loop back</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ FALSE</div>
+                <div style="height:20px;"></div>
+            </div>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i, n, sum = 0;
+
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    /* for loop - loop n times */
+    for (i = 1; i &lt;= n; i++) {
+        sum += i;
+        printf("i=%d, sum=%d\n", i, sum);
+    }
+    printf("Total sum = %d\n", sum);
+
+    /* Multiplication table */
+    int num = 5;
+    printf("\nMultiplication table of %d:\n", num);
+    for (i = 1; i &lt;= 10; i++) {
+        printf("%d x %d = %d\n", num, i, num * i);
+    }
+
+    return 0;
+}</code></pre>
+
+<h3>4.3.2 while Loop</h3>
+<p><strong>Syntax:</strong></p>
+<pre><code>while (condition) {
+    /* body */
+}</code></pre>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: while Loop</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div style="border:2px solid #000;padding:9px 20px;background:#f5f5f5;font-size:14px;min-width:160px;text-align:center;">◇ Condition?</div>
+        <div style="display:flex;width:320px;align-items:flex-start;justify-content:center;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ TRUE</div>
+                <div class="fc-process">Loop Body</div>
+                <div style="font-size:11px;color:#555;margin:4px 0;">↩ Loop back</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ FALSE</div>
+                <div style="height:20px;"></div>
+            </div>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+    <p style="font-size:13px;">📌 ពិនិត្យ Condition មុន → ប្រសិនបើ FALSE ពីដំបូង Loop Body មិនប្រតិបត្តិ (0 ដង)</p>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    /* Guess the number game */
+    int secret = 7, guess;
+
+    printf("Guess the number (1-10): ");
+    scanf("%d", &guess);
+
+    while (guess != secret) {
+        if (guess &lt; secret)
+            printf("Too low! Try again: ");
+        else
+            printf("Too high! Try again: ");
+        scanf("%d", &guess);
+    }
+
+    printf("Congratulations! Correct!\n");
+    return 0;
+}</code></pre>
+
+<h3>4.3.3 do-while Loop</h3>
+<p><strong>Syntax:</strong></p>
+<pre><code>do {
+    /* body - executes at least once */
+} while (condition);</code></pre>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: do-while Loop</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div class="fc-process" style="border-width:3px;">Execute Loop Body (do) ← ប្រតិបត្តិមុន!</div>
+        <div class="fc-arrow"></div>
+        <div style="border:2px solid #000;padding:9px 20px;background:#f5f5f5;font-size:14px;min-width:160px;text-align:center;">◇ Condition? (while)</div>
+        <div style="display:flex;width:320px;align-items:flex-start;justify-content:center;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ TRUE</div>
+                <div style="font-size:11px;color:#555;">↩ Loop back</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ FALSE</div>
+                <div style="height:10px;"></div>
+            </div>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+    <p style="font-size:13px;color:#e00;font-weight:bold;">⚠️ Loop Body ប្រតិបត្តិមុន → ពិនិត្យ Condition ក្រោយ → យ៉ាងហោចណាស់ 1 ដង!</p>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n===== Menu =====\n");
+        printf("1. Say Hello\n");
+        printf("2. Show Date\n");
+        printf("3. Exit\n");
+        printf("Choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: printf("Hello, User!\n"); break;
+            case 2: printf("Today is a great day!\n"); break;
+            case 3: printf("Goodbye!\n"); break;
+            default: printf("Invalid choice!\n");
+        }
+    } while (choice != 3);
+
+    return 0;
+}</code></pre>
+
+<h3>ប្រៀបធៀប Loops:</h3>
+<table>
+    <tr><th>Feature</th><th>for Loop</th><th>while Loop</th><th>do-while Loop</th></tr>
+    <tr><td>ចំនួនដង</td><td>ដឹងជាមុន</td><td>មិនដឹង</td><td>មិនដឹង, ≥1</td></tr>
+    <tr><td>ពិនិត្យ condition</td><td>មុន execute</td><td>មុន execute</td><td>បន្ទាប់ execute</td></tr>
+    <tr><td>Minimum executions</td><td>0</td><td>0</td><td>1</td></tr>
+    <tr><td>ឧទាហរណ៍</td><td>Loop arrays</td><td>Input validation</td><td>Menu system</td></tr>
+</table>
+
+<h3>4.3.4 break និង continue</h3>
+
+<div class="flowchart">
+    <div class="fc-title">Flowchart: break Statement</div>
+    <div class="fc-wrap">
+        <div class="fc-terminal">START</div>
+        <div class="fc-arrow"></div>
+        <div style="border:2px solid #000;padding:9px 20px;background:#f5f5f5;font-size:14px;min-width:160px;text-align:center;">◇ Loop Condition?</div>
+        <div style="display:flex;width:360px;align-items:flex-start;justify-content:center;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ TRUE</div>
+                <div style="border:2px solid #000;padding:9px 20px;background:#f5f5f5;font-size:14px;min-width:140px;text-align:center;">◇ Break?</div>
+                <div style="display:flex;width:240px;align-items:flex-start;justify-content:center;gap:8px;">
+                    <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                        <div class="fc-label">▼ TRUE</div>
+                        <div class="fc-process" style="font-weight:bold;background:#ffe0e0;">BREAK! ចេញ</div>
+                        <div class="fc-arrow-sm"></div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                        <div class="fc-label">▼ FALSE</div>
+                        <div class="fc-process" style="font-size:12px;">Loop Body</div>
+                        <div style="font-size:11px;color:#555;">↩ Loop back</div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+                <div class="fc-label">▼ FALSE</div>
+                <div style="height:20px;"></div>
+            </div>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-terminal">END</div>
+    </div>
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i;
+
+    /* break - ចេញពី loop */
+    for (i = 1; i &lt;= 100; i++) {
+        if (i % 7 == 0) {
+            printf("First multiple of 7: %d\n", i);
+            break;
+        }
+    }
+
+    /* continue - រំលង iteration បច្ចុប្បន្ន */
+    printf("Odd numbers: ");
+    for (i = 1; i &lt;= 10; i++) {
+        if (i % 2 == 0) continue;  /* រំលងលេខគូ */
+        printf("%d ", i);
+    }
+    printf("\n");  /* Output: 1 3 5 7 9 */
+
+    return 0;
+}</code></pre>
+
+<h3>4.3.5 Nested Loops</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i, j, n = 5;
+
+    /* Triangle pattern */
+    for (i = 1; i &lt;= n; i++) {
+        for (j = 1; j &lt;= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    /* Output:
+       *
+       * *
+       * * *
+       * * * *
+       * * * * * */
+
+    return 0;
+}</code></pre>
+
+<h3>4.3.6 goto Statement (C-specific)</h3>
+<p>C មាន <code>goto</code> statement ដែលលោតទៅ label ណាមួយ ។ ជាធម្មតាមិន recommended ប៉ុន្តែ C ប្រើក្នុង error handling ខ្លះ:</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i = 0;
+
+start:
+    if (i &lt; 5) {
+        printf("i = %d\n", i);
+        i++;
+        goto start;  /* Jump back to label "start" */
+    }
+
+    printf("Done!\n");
+    return 0;
+}</code></pre>
+
+<div class="tip">
+    <strong>ដំបូន្មាន:</strong> ជៀសវាង <code>goto</code> ក្នុងការ programming ធម្មតា ព្រោះវាធ្វើឱ្យកូដអានពិបាក (spaghetti code)។ ប្រើ loops ជំនួស។ <code>goto</code> ប្រើតែក្នុង error cleanup patterns ខ្លះ។
+</div>
+
+<div class="exercise">
+    <h4>លំហាត់ប្រចាំមេរៀនទី 4 - Control Structures</h4>
+    <p><strong>Exercise 1:</strong> សរសេរកម្មវិធីពិនិត្យ leap year (ឆ្នាំចំ): ចែក 4  បាន ប៉ុន្តែចែក 100 មិនបាន លើកលែងចែក 400 បាន។</p>
+    <p><strong>Exercise 2:</strong> បង្កើត ATM menu (Check Balance, Deposit, Withdraw, Exit) ប្រើ do-while + switch។</p>
+    <p><strong>Exercise 3:</strong> សរសេរកម្មវិធីរក prime numbers ពី 1 ដល់ 100។</p>
+    <p><strong>Exercise 4:</strong> បង្កើតកម្មវិធីគណនា factorial: n! = n × (n-1) × ... × 1</p>
+    <p><strong>Exercise 5:</strong> សរសេរ pattern:<br>1<br>1 2<br>1 2 3<br>1 2 3 4<br>1 2 3 4 5</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== CHAPTER 5 ==================== -->
+<h1>❖ 5. Functions in C</h1>
+
+<h2>5.1 Introduction to Functions <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Function ជា block នៃ code ដែលរៀបចំឡើងដើម្បីធ្វើ task ជាក់លាក់ ហើយ អាចហៅ (call) ច្រើនដងក្នុង program។</p>
+
+<p><strong>ហេតុអ្វីប្រើ Functions:</strong></p>
+<ul>
+    <li><strong>Code Reusability</strong> - សរសេរម្ដង ប្រើច្រើនកន្លែង</li>
+    <li><strong>Modularity</strong> - បែងចែក program ទៅជា modules តូចៗ</li>
+    <li><strong>Easy Debugging</strong> - ស្វែងរក bugs ងាយ</li>
+    <li><strong>Readability</strong> - អានកូដបានងាយ</li>
+</ul>
+
+<h2>5.2 Function Structure <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<pre><code>returnType functionName(parameter1, parameter2, ...) {
+    /* Function body */
+    /* statements */
+    return value;   /* optional */
+}</code></pre>
+
+<p><strong>ឧទាហរណ៍:</strong></p>
+<pre><code>int add(int a, int b) {
+    int sum = a + b;
+    return sum;
+}
+/* int    = return type
+   add    = function name
+   int a, int b = parameters
+   return sum = return statement */</code></pre>
+
+<h2>5.3 Function Declaration (Prototype) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Function prototype ជាការប្រកាស function signature មុនពេលប្រើ ។ ត្រូវ declare prototype ដែល compiler ដឹងអំពី function ដែល call ។</p>
+
+<p><strong>Syntax:</strong></p>
+<pre><code>returnType functionName(parameterTypes);</code></pre>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+/* Function Prototypes (declarations) */
+int add(int, int);
+void greet(void);
+double circleArea(double);
+int isEven(int);
+
+int main() {
+    int result = add(5, 3);
+    printf("5 + 3 = %d\n", result);
+
+    greet();
+
+    double area = circleArea(5.0);
+    printf("Circle area (r=5): %.2f\n", area);
+
+    printf("Is 10 even? %s\n", isEven(10) ? "Yes" : "No");
+
+    return 0;
+}
+
+/* Function Definitions */
+int add(int a, int b) {
+    return a + b;
+}
+
+void greet(void) {
+    printf("Hello from C!\n");
+}
+
+double circleArea(double radius) {
+    return 3.14159 * radius * radius;
+}
+
+int isEven(int n) {
+    return (n % 2 == 0);  /* return 1 (true) or 0 (false) */
+}</code></pre>
+
+<div class="note">
+    <strong>C vs C++ Prototype:</strong> ក្នុង C <code>void</code> ត្រូវ explicit ក្នុង parameter list ប្រសិនបើ function មិនទទួល argument: <code>void greet(void);</code> មិនមែន <code>void greet();</code> (ក្នុង C89 <code>greet()</code> មានន័យថា accept any parameters!)
+</div>
+
+<h2>5.4 Types of Functions <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h3>5.4.1 No Parameter, No Return</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+void displayWelcome(void) {
+    printf("========================================\n");
+    printf("   Welcome to C Programming!           \n");
+    printf("========================================\n");
+}
+
+int main() {
+    displayWelcome();
+    return 0;
+}</code></pre>
+
+<h3>5.4.2 With Parameters, No Return</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+void printSquare(int num) {
+    printf("Square of %d = %d\n", num, num * num);
+}
+
+void greetUser(char name[]) {
+    printf("Hello, %s!\n", name);
+}
+
+int main() {
+    printSquare(5);
+    printSquare(10);
+    greetUser("Sokha");
+    return 0;
+}</code></pre>
+
+<h3>5.4.3 No Parameter, With Return</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+double getPi(void) {
+    return 3.14159265359;
+}
+
+int getMaxInt(void) {
+    return 2147483647;
+}
+
+int main() {
+    printf("PI = %.10f\n", getPi());
+    printf("Max int = %d\n", getMaxInt());
+    return 0;
+}</code></pre>
+
+<h3>5.4.4 With Parameters, With Return (ប្រើច្រើនបំផុត)</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int findMax(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+double power(double base, double exp) {
+    return pow(base, exp);
+}
+
+int isPrime(int n) {
+    int i;
+    if (n &lt;= 1) return 0;
+    if (n == 2) return 1;
+    for (i = 2; i &lt;= (int)sqrt(n); i++) {
+        if (n % i == 0) return 0;
+    }
+    return 1;
+}
+
+int main() {
+    printf("Max(10, 25) = %d\n", findMax(10, 25));
+    printf("2^8 = %.0f\n", power(2, 8));
+    printf("Is 17 prime? %s\n", isPrime(17) ? "Yes" : "No");
+    return 0;
+}</code></pre>
+
+<h2>5.5 Pass by Value <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>ក្នុង C by default, arguments ត្រូវបាន pass by value គឺ function ទទួល copy ។ ផ្លាស់ប្ដូរ parameter ក្នុង function មិនប៉ះពាល់ original variable ។</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+void modifyValue(int x) {
+    x = x * 2;
+    printf("Inside function: x = %d\n", x);
+}
+
+int main() {
+    int num = 10;
+    printf("Before: num = %d\n", num);
+    modifyValue(num);
+    printf("After : num = %d\n", num);  /* នៅតែ 10! */
+    return 0;
+}
+/* Output:
+   Before: num = 10
+   Inside function: x = 20
+   After : num = 10   ← មិនផ្លាស់ប្ដូរ */</code></pre>
+
+<h2>5.6 Pass by Pointer (Pass by Reference in C) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>ក្នុង C គ្មាន pass by reference ដូច C++ ទេ ។ ជំនួស ប្រើ <strong>pointers</strong> ដើម្បីផ្លាស់ប្ដូរ original variable ។</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+void modifyValue(int *x) {  /* ទទួល pointer */
+    *x = *x * 2;            /* dereference pointer */
+    printf("Inside function: *x = %d\n", *x);
+}
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int num = 10;
+    printf("Before: num = %d\n", num);
+    modifyValue(&num);           /* pass address of num */
+    printf("After : num = %d\n", num);  /* ផ្លាស់ប្ដូរ! 20 */
+
+    int x = 5, y = 10;
+    printf("\nBefore swap: x=%d, y=%d\n", x, y);
+    swap(&x, &y);
+    printf("After swap : x=%d, y=%d\n", x, y);
+    return 0;
+}
+/* Output:
+   Before: num = 10
+   Inside function: *x = 20
+   After : num = 20   ← ផ្លាស់ប្ដូរ!
+   Before swap: x=5, y=10
+   After swap : x=10, y=5 */</code></pre>
+
+<h2>5.7 Recursive Functions (អនុគមន៍ Recursive) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Recursive function ជា function ដែលហៅខ្លួនឯង ។ ត្រូវតែមាន base case ដើម្បីបញ្ចប់ recursion ។</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+/* Factorial: n! = n * (n-1) * ... * 1 */
+long long factorial(int n) {
+    if (n == 0 || n == 1)   /* Base case */
+        return 1;
+    return n * factorial(n - 1);  /* Recursive case */
+}
+
+/* Fibonacci: fib(n) = fib(n-1) + fib(n-2) */
+int fibonacci(int n) {
+    if (n == 0) return 0;   /* Base case */
+    if (n == 1) return 1;   /* Base case */
+    return fibonacci(n-1) + fibonacci(n-2);  /* Recursive */
+}
+
+/* Sum: 1 + 2 + ... + n */
+int sumN(int n) {
+    if (n == 0) return 0;
+    return n + sumN(n - 1);
+}
+
+int main() {
+    int i;
+    printf("Factorials:\n");
+    for (i = 0; i &lt;= 10; i++) {
+        printf("%d! = %lld\n", i, factorial(i));
+    }
+
+    printf("\nFibonacci sequence (first 10):\n");
+    for (i = 0; i &lt; 10; i++) {
+        printf("fib(%d) = %d\n", i, fibonacci(i));
+    }
+
+    printf("\nSum 1 to 10 = %d\n", sumN(10));
+    return 0;
+}</code></pre>
+
+<h2>5.8 Static Variables in Functions <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p><code>static</code> variable ក្នុង function រក្សាតម្លៃ រហូតដល់ program បញ្ចប់ (មិនត្រូវ reset ពេល function ហៅឡើងវិញ):</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+void counter(void) {
+    static int count = 0;  /* initialized once only */
+    count++;
+    printf("Function called %d time(s)\n", count);
+}
+
+int main() {
+    counter();  /* 1 */
+    counter();  /* 2 */
+    counter();  /* 3 */
+    return 0;
+}</code></pre>
+
+<h2>5.9 Function Scope <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Scope កំណត់ថា variable visible/accessible ពីណា:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int globalVar = 100;    /* Global: accessible everywhere */
+
+void showScope(void) {
+    int localVar = 200;  /* Local: accessible only in this function */
+    printf("Global: %d\n", globalVar);  /* OK */
+    printf("Local : %d\n", localVar);   /* OK */
+}
+
+int main() {
+    printf("Global: %d\n", globalVar);  /* OK */
+    /* printf("%d", localVar); */        /* ERROR - not visible */
+    showScope();
+    return 0;
+}</code></pre>
+
+<h3>ឧទាហរណ៍ពេញលេញ - Student Grade System:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+/* Prototypes */
+char getGrade(float score);
+int isPassed(float score);
+void printHeader(void);
+void displayStudent(char name[], int age, float score);
+
+int main() {
+    printHeader();
+    displayStudent("Sokha", 20, 85.5);
+    displayStudent("Dara", 21, 72.0);
+    displayStudent("Bopha", 22, 55.0);
+    return 0;
+}
+
+char getGrade(float score) {
+    if (score >= 90) return 'A';
+    else if (score >= 80) return 'B';
+    else if (score >= 70) return 'C';
+    else if (score >= 60) return 'D';
+    return 'F';
+}
+
+int isPassed(float score) {
+    return score >= 60;
+}
+
+void printHeader(void) {
+    printf("========================================\n");
+    printf("       Student Information System       \n");
+    printf("========================================\n");
+}
+
+void displayStudent(char name[], int age, float score) {
+    printf("Name : %s\n", name);
+    printf("Age  : %d\n", age);
+    printf("Score: %.2f\n", score);
+    printf("Grade: %c\n", getGrade(score));
+    printf("Status: %s\n", isPassed(score) ? "PASS" : "FAIL");
+    printf("-------------------\n");
+}</code></pre>
+
+<div class="exercise">
+    <h4>លំហាត់ប្រចាំមេរៀនទី 5 - Functions</h4>
+    <p><strong>Exercise 1:</strong> សរសេរ function <code>factorial(n)</code> ដោយប្រើ loop (iterative) និង recursion ហើយប្រៀបធៀបលទ្ធផល។</p>
+    <p><strong>Exercise 2:</strong> បង្កើត function <code>isPalindrome(n)</code> ពិនិត្យថាលេខ n ជា palindrome (121, 12321)។</p>
+    <p><strong>Exercise 3:</strong> សរសេរ functions: <code>findMin(arr, size)</code>, <code>findMax(arr, size)</code>, <code>average(arr, size)</code> សម្រាប់ integer array។</p>
+    <p><strong>Exercise 4:</strong> បង្កើត function <code>reverseNumber(n)</code> ដែល reverse digits (ឧទាហរណ៍ 1234 → 4321)។</p>
+    <p><strong>Exercise 5:</strong> សរសេរ Calculator program ជាមួយ functions: add, subtract, multiply, divide, power, sqrt ។ ប្រើ menu loop ហើយ exit ប្រើ 0។</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== CHAPTER 6 ==================== -->
+<h1>❖ 6. Arrays in C</h1>
+
+<h2>6.1 Introduction to Arrays <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Array ជា collection នៃ elements ដែលមានប្រភេទដូចគ្នា រក្សាទុកក្នុង memory locations ជាប់គ្នា (contiguous)។</p>
+
+<p><strong>ហេតុអ្វីប្រើ Arrays:</strong></p>
+<ul>
+    <li>រក្សាទុក data ច្រើន (scores, names...) ក្នុង variable តែ 1</li>
+    <li>ដំណើរការ data ដោយ loop ងាយស្រួល</li>
+    <li>Access element ណាមួយ ដោយ index បានលឿន</li>
+</ul>
+
+<h2>6.2 Array Declaration <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p><strong>Syntax:</strong></p>
+<pre><code>dataType arrayName[size];</code></pre>
+
+<pre><code>int numbers[5];       /* array of 5 integers */
+double prices[10];    /* array of 10 doubles */
+char letters[26];     /* array of 26 characters */
+char name[50];        /* C-string: char array for names */</code></pre>
+
+<div class="important">
+    <strong>Array Index ចាប់ពី 0!</strong>
+    <ul>
+        <li>Element ទីមួយ: <code>array[0]</code></li>
+        <li>Element ទីចុងក្រោយ: <code>array[size-1]</code></li>
+        <li>C មិន check array bounds → access index ខុស = <strong>undefined behavior</strong>!</li>
+    </ul>
+</div>
+
+<h2>6.3 Array Initialization <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    /* 1. Initialize at declaration */
+    int arr1[5] = {10, 20, 30, 40, 50};
+
+    /* 2. Partial initialization - rest = 0 */
+    int arr2[5] = {10, 20};   /* {10, 20, 0, 0, 0} */
+
+    /* 3. All zeros */
+    int arr3[5] = {0};        /* {0, 0, 0, 0, 0} */
+
+    /* 4. Size auto-determined */
+    int arr4[] = {100, 200, 300};  /* size = 3 */
+
+    /* 5. Calculate size at runtime */
+    int size = sizeof(arr4) / sizeof(arr4[0]);
+    printf("arr4 size = %d\n", size);  /* 3 */
+
+    /* Access and modify */
+    arr1[0] = 99;
+    printf("arr1[0] = %d\n", arr1[0]);
+
+    return 0;
+}</code></pre>
+
+<h2>6.4 Array with Loops <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+
+<h3>Input/Output Array:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i;
+    int numbers[5];
+    int size = 5;
+
+    /* Input */
+    printf("Enter %d numbers:\n", size);
+    for (i = 0; i &lt; size; i++) {
+        printf("Number[%d]: ", i);
+        scanf("%d", &numbers[i]);
+    }
+
+    /* Output */
+    printf("\nYou entered: ");
+    for (i = 0; i &lt; size; i++) {
+        printf("%d ", numbers[i]);
+    }
+    printf("\n");
+
+    return 0;
+}</code></pre>
+
+<h3>Array Statistics:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i;
+    int numbers[] = {45, 12, 78, 23, 90, 34, 56};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    int sum = 0, max, min;
+
+    max = min = numbers[0];
+
+    for (i = 0; i &lt; size; i++) {
+        sum += numbers[i];
+        if (numbers[i] &gt; max) max = numbers[i];
+        if (numbers[i] &lt; min) min = numbers[i];
+    }
+
+    printf("Array: ");
+    for (i = 0; i &lt; size; i++) printf("%d ", numbers[i]);
+    printf("\n");
+    printf("Sum     = %d\n", sum);
+    printf("Average = %.2f\n", (double)sum / size);
+    printf("Maximum = %d\n", max);
+    printf("Minimum = %d\n", min);
+
+    return 0;
+}</code></pre>
+
+<h2>6.5 Character Arrays (Strings in C) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>ក្នុង C គ្មាន <code>string</code> type ដូច C++ ទេ ។ Strings ត្រូវបានតំណាងដោយ <strong>char arrays</strong> ដែលបញ្ចប់ដោយ null character <code>'\0'</code>。</p>
+
+<div class="important">
+    <strong>Null Terminator '\0':</strong> រាល់ C string ត្រូវមាន <code>'\0'</code> នៅចុងបញ្ចប់ ។ ដូច្នេះ array size ត្រូវ = string length + 1 ។ ឧទាហរណ៍ "Sokha" (5 chars) ត្រូវការ <code>char name[6]</code> យ៉ាងតិច ។
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;  /* for string functions */
+
+int main() {
+    /* Declaration and Initialization */
+    char name1[20];                       /* ទុកទំហំ */
+    char name2[] = "Sokha";              /* size = 6 (5+'\0') */
+    char name3[20] = "Dara";
+    char name4[] = {'B','o','p','h','a','\0'};  /* explicit '\0' */
+
+    /* Print strings */
+    printf("name2 = %s\n", name2);
+    printf("name3 = %s\n", name3);
+    printf("name4 = %s\n", name4);
+
+    /* String length (not counting '\0') */
+    printf("Length of name2 = %lu\n", strlen(name2));  /* 5 */
+
+    /* Copy string */
+    char dest[20];
+    strcpy(dest, name2);
+    printf("Copied: %s\n", dest);
+
+    /* Concatenate */
+    char full[50] = "Hello, ";
+    strcat(full, name2);
+    printf("Concat: %s\n", full);  /* Hello, Sokha */
+
+    /* Compare */
+    if (strcmp(name2, "Sokha") == 0)
+        printf("name2 equals 'Sokha'\n");
+
+    /* Compare n chars */
+    if (strncmp(name2, "Sok", 3) == 0)
+        printf("name2 starts with 'Sok'\n");
+
+    return 0;
+}</code></pre>
+
+<h3>String Input/Output:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char word[50], sentence[200];
+
+    /* scanf reads until whitespace */
+    printf("Enter a word: ");
+    scanf("%s", word);             /* no & needed for arrays */
+    printf("Word: %s\n", word);
+
+    /* fgets reads the entire line including spaces */
+    printf("Enter a sentence: ");
+    scanf(" ");                    /* clear buffer */
+    fgets(sentence, sizeof(sentence), stdin);
+    printf("Sentence: %s", sentence);
+
+    /* gets() - avoid! unsafe (buffer overflow) */
+    /* Use fgets() instead */
+
+    return 0;
+}</code></pre>
+
+<h3>String Functions (string.h):</h3>
+<table>
+    <tr><th>Function</th><th>Description</th><th>Example</th></tr>
+    <tr><td>strlen(s)</td><td>ប្រវែង string</td><td>strlen("Hi") → 2</td></tr>
+    <tr><td>strcpy(dst, src)</td><td>copy string</td><td>strcpy(a, "Hi")</td></tr>
+    <tr><td>strncpy(dst, src, n)</td><td>copy n chars (safe)</td><td>strncpy(a, b, 10)</td></tr>
+    <tr><td>strcat(dst, src)</td><td>concatenate</td><td>strcat(a, " World")</td></tr>
+    <tr><td>strncat(dst, src, n)</td><td>concat n chars (safe)</td><td>strncat(a, b, 5)</td></tr>
+    <tr><td>strcmp(s1, s2)</td><td>compare (0=equal)</td><td>strcmp("a","a") → 0</td></tr>
+    <tr><td>strncmp(s1, s2, n)</td><td>compare n chars</td><td>strncmp(a, b, 3)</td></tr>
+    <tr><td>strchr(s, c)</td><td>រក char ក្នុង string</td><td>strchr("Hello", 'l')</td></tr>
+    <tr><td>strstr(s1, s2)</td><td>រក substring</td><td>strstr("Hello","ll")</td></tr>
+    <tr><td>strupr/strlwr</td><td>upper/lower case</td><td>platform-specific</td></tr>
+    <tr><td>sprintf(buf,...)</td><td>format to string</td><td>sprintf(s, "%d", 42)</td></tr>
+</table>
+
+<h3>ctype.h - Character Functions:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+    char c = 'A';
+
+    printf("isalpha('%c') = %d\n", c, isalpha(c));   /* 1 */
+    printf("isdigit('5')  = %d\n", isdigit('5'));     /* 1 */
+    printf("islower('a')  = %d\n", islower('a'));     /* 1 */
+    printf("isupper('A')  = %d\n", isupper('A'));     /* 1 */
+    printf("isspace(' ')  = %d\n", isspace(' '));     /* 1 */
+    printf("tolower('A')  = %c\n", tolower('A'));     /* a */
+    printf("toupper('a')  = %c\n", toupper('a'));     /* A */
+
+    return 0;
+}</code></pre>
+
+<h2>6.6 Multi-dimensional Arrays <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>C គាំទ្រ multi-dimensional arrays ។ 2D array ប្រើច្រើនបំផុត (matrix):</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i, j;
+
+    /* 2D array declaration */
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    /* Print matrix */
+    printf("Matrix:\n");
+    for (i = 0; i &lt; 3; i++) {
+        for (j = 0; j &lt; 3; j++) {
+            printf("%3d", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    /* Sum of diagonal */
+    int diagSum = 0;
+    for (i = 0; i &lt; 3; i++) {
+        diagSum += matrix[i][i];
+    }
+    printf("Diagonal sum = %d\n", diagSum);
+
+    /* Matrix of strings */
+    char students[3][20] = {"Sokha", "Dara", "Bopha"};
+    printf("\nStudents:\n");
+    for (i = 0; i &lt; 3; i++) {
+        printf("%d. %s\n", i+1, students[i]);
+    }
+
+    return 0;
+}</code></pre>
+
+<h3>ឧទាហរណ៍ - Sort and Search:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+/* Bubble Sort */
+void bubbleSort(int arr[], int size) {
+    int i, j, temp;
+    for (i = 0; i &lt; size - 1; i++) {
+        for (j = 0; j &lt; size - i - 1; j++) {
+            if (arr[j] &gt; arr[j+1]) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+/* Linear Search */
+int linearSearch(int arr[], int size, int target) {
+    int i;
+    for (i = 0; i &lt; size; i++) {
+        if (arr[i] == target) return i;
+    }
+    return -1;
+}
+
+/* Display Array */
+void displayArray(int arr[], int size) {
+    int i;
+    for (i = 0; i &lt; size; i++) printf("%d ", arr[i]);
+    printf("\n");
+}
+
+int main() {
+    int numbers[] = {64, 34, 25, 12, 22, 11, 90};
+    int size = 7;
+
+    printf("Original: ");
+    displayArray(numbers, size);
+
+    int idx = linearSearch(numbers, size, 25);
+    if (idx != -1)
+        printf("Found 25 at index %d\n", idx);
+    else
+        printf("25 not found\n");
+
+    bubbleSort(numbers, size);
+    printf("Sorted  : ");
+    displayArray(numbers, size);
+
+    return 0;
+}</code></pre>
+
+<h3>ឧទាហរណ៍ - Student Grade Report:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+#define MAX_STUDENTS 5
+
+int main() {
+    int i;
+    char names[MAX_STUDENTS][30];
+    float scores[MAX_STUDENTS];
+    char grades[MAX_STUDENTS];
+
+    /* Input */
+    printf("===== Enter Student Info =====\n");
+    for (i = 0; i &lt; MAX_STUDENTS; i++) {
+        printf("\nStudent %d:\n", i+1);
+        printf("Name : "); scanf("%s", names[i]);
+        printf("Score: "); scanf("%f", &scores[i]);
+
+        if (scores[i] >= 90) grades[i] = 'A';
+        else if (scores[i] >= 80) grades[i] = 'B';
+        else if (scores[i] >= 70) grades[i] = 'C';
+        else if (scores[i] >= 60) grades[i] = 'D';
+        else grades[i] = 'F';
+    }
+
+    /* Statistics */
+    float sum = 0, highest = scores[0], lowest = scores[0];
+    int hiIdx = 0, loIdx = 0;
+
+    for (i = 0; i &lt; MAX_STUDENTS; i++) {
+        sum += scores[i];
+        if (scores[i] &gt; highest) { highest = scores[i]; hiIdx = i; }
+        if (scores[i] &lt; lowest)  { lowest  = scores[i]; loIdx = i; }
+    }
+
+    /* Output Report */
+    printf("\n===== Student Report =====\n");
+    printf("%-15s %-8s %-6s\n", "Name", "Score", "Grade");
+    printf("------------------------------\n");
+    for (i = 0; i &lt; MAX_STUDENTS; i++) {
+        printf("%-15s %-8.2f %-6c\n", names[i], scores[i], grades[i]);
+    }
+    printf("\n===== Statistics =====\n");
+    printf("Average : %.2f\n", sum / MAX_STUDENTS);
+    printf("Highest : %.2f (%s)\n", highest, names[hiIdx]);
+    printf("Lowest  : %.2f (%s)\n", lowest,  names[loIdx]);
+
+    return 0;
+}</code></pre>
+
+<div class="exercise">
+    <h4>លំហាត់ប្រចាំមេរៀនទី 6 - Arrays</h4>
+    <p><strong>Exercise 1:</strong> សរសេរកម្មវិធីរក second largest number ក្នុង array។</p>
+    <p><strong>Exercise 2:</strong> បង្កើតកម្មវិធី reverse array (5,4,3,2,1 → 1,2,3,4,5)។</p>
+    <p><strong>Exercise 3:</strong> សរសេរ Selection Sort algorithm ហើយ sort array ascending និង descending។</p>
+    <p><strong>Exercise 4:</strong> បង្កើតកម្មវិធី string operations: count vowels, count words, reverse string ។</p>
+    <p><strong>Exercise 5:</strong> សរសេរ Matrix Multiplication program សម្រាប់ 3×3 matrices។</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== CHAPTER 7 ==================== -->
+<h1>❖ 7. Pointers in C</h1>
+
+<h2>7.1 Introduction to Pointers <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Pointer ជា variable ដែលរក្សាទុក <strong>memory address</strong> របស់ variable មួយទៀត ។ Pointers ជា feature ដ៏ powerful និងសំខាន់បំផុតក្នុង C ។</p>
+
+<p><strong>ហេតុអ្វីប្រើ Pointers:</strong></p>
+<ul>
+    <li><strong>Pass by Reference</strong> - ផ្លាស់ប្ដូរ original variables ពី functions</li>
+    <li><strong>Dynamic Memory</strong> - allocate memory ក្នុង runtime</li>
+    <li><strong>Arrays &amp; Strings</strong> - efficient array processing</li>
+    <li><strong>Data Structures</strong> - Linked Lists, Trees, Graphs</li>
+    <li><strong>Function Pointers</strong> - ផ្ទេរ functions ជា arguments</li>
+    <li><strong>Low-level Programming</strong> - hardware, OS development</li>
+</ul>
+
+<h2>7.2 Memory Concept <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>ស្មំថា variable <code>int x = 10</code>:</p>
+<ul>
+    <li>Computer allocate 4 bytes ក្នុង RAM</li>
+    <li>Address ឧទាហរណ៍: <code>0x7fff5c4e3a1c</code></li>
+    <li>Pointer រក្សាទុក address <code>0x7fff5c4e3a1c</code></li>
+    <li>Dereference pointer = access value <code>10</code> ដែលស្ថិតនៅ address នោះ</li>
+</ul>
+
+<h2>7.3 Pointer Declaration <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p><strong>Syntax:</strong></p>
+<pre><code>dataType *pointerName;</code></pre>
+
+<pre><code>int *ptr;       /* pointer to int */
+double *dptr;   /* pointer to double */
+char *cptr;     /* pointer to char (C-string) */
+void *vptr;     /* generic pointer */</code></pre>
+
+<h2>7.4 Address Operator (&) and Dereference (*) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<table>
+    <tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th></tr>
+    <tr><td>&amp;</td><td>Address-of</td><td>ទទួល address របស់ variable</td><td>ptr = &amp;num;</td></tr>
+    <tr><td>*</td><td>Declaration</td><td>ប្រកាស pointer variable</td><td>int *ptr;</td></tr>
+    <tr><td>*</td><td>Dereference</td><td>access value នៅ address</td><td>value = *ptr;</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 42;
+    int *ptr;
+
+    ptr = &num;    /* ptr holds address of num */
+
+    printf("Value of num      : %d\n", num);
+    printf("Address of num    : %p\n", (void*)&num);
+    printf("Value of ptr (addr): %p\n", (void*)ptr);
+    printf("Value via ptr (*ptr): %d\n", *ptr);
+
+    /* Modify via pointer */
+    *ptr = 100;
+    printf("\nAfter *ptr = 100:\n");
+    printf("num  = %d\n", num);    /* 100 */
+    printf("*ptr = %d\n", *ptr);   /* 100 */
+
+    return 0;
+}
+/* Sample Output:
+   Value of num       : 42
+   Address of num     : 0x7ffd1234
+   Value of ptr (addr): 0x7ffd1234
+   Value via ptr (*ptr): 42
+   After *ptr = 100:
+   num  = 100
+   *ptr = 100 */</code></pre>
+
+<h2>7.5 NULL Pointer <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>NULL pointer ជា pointer ដែលមិនកំណត់ទៅ address ណាទេ ។ ប្រើ <code>NULL</code> ពី <code>&lt;stdio.h&gt;</code> ឬ <code>&lt;stddef.h&gt;</code>:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int *ptr = NULL;  /* NULL pointer - safe initialization */
+
+    /* Always check before dereferencing */
+    if (ptr != NULL) {
+        printf("Value: %d\n", *ptr);
+    } else {
+        printf("Pointer is NULL - cannot dereference!\n");
+    }
+
+    /* Never do this - undefined behavior! */
+    /* *ptr = 10; */   /* CRASH! */
+
+    return 0;
+}</code></pre>
+
+<h2>7.6 Pointer to Pointer (**) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Pointer to pointer រក្សាទុក address របស់ pointer មួយទៀត:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 42;
+    int *ptr = &num;     /* pointer to int */
+    int **pptr = &ptr;   /* pointer to pointer to int */
+
+    printf("num    = %d\n", num);
+    printf("*ptr   = %d\n", *ptr);
+    printf("**pptr = %d\n", **pptr);
+
+    /* Modify via double pointer */
+    **pptr = 999;
+    printf("\nAfter **pptr = 999:\n");
+    printf("num = %d\n", num);   /* 999 */
+
+    return 0;
+}</code></pre>
+
+<h2>7.7 Pointer Arithmetic <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Pointer arithmetic អនុញ្ញាតឱ្យ move pointer ទៅ elements ជាប់គ្នា:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int *ptr = arr;   /* ptr points to arr[0] */
+    int i;
+
+    printf("Array via pointer arithmetic:\n");
+    for (i = 0; i &lt; 5; i++) {
+        printf("ptr+%d: address=%p, value=%d\n",
+               i, (void*)(ptr+i), *(ptr+i));
+    }
+
+    /* ptr++ moves to next element (not just +1 byte, but +sizeof(int)) */
+    printf("\nUsing ptr++:\n");
+    ptr = arr;
+    for (i = 0; i &lt; 5; i++) {
+        printf("%d ", *ptr);
+        ptr++;
+    }
+    printf("\n");
+
+    /* Difference between pointers */
+    int *start = arr;
+    int *end = &arr[4];
+    printf("\nElements between start and end: %ld\n", end - start);  /* 4 */
+
+    return 0;
+}</code></pre>
+
+<h2>7.8 Pointers and Arrays <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>ក្នុង C, Array name ជា constant pointer ទៅ first element:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+/* Array as function parameter (actually pointer) */
+void displayArray(int *arr, int size) {
+    int i;
+    for (i = 0; i &lt; size; i++) {
+        printf("%d ", arr[i]);   /* same as *(arr+i) */
+    }
+    printf("\n");
+}
+
+void doubleAll(int *arr, int size) {
+    int i;
+    for (i = 0; i &lt; size; i++) {
+        *(arr + i) *= 2;   /* modifies original array */
+    }
+}
+
+int main() {
+    int numbers[] = {1, 2, 3, 4, 5};
+    int size = 5;
+
+    printf("Original: ");
+    displayArray(numbers, size);   /* numbers = &numbers[0] */
+
+    doubleAll(numbers, size);
+    printf("Doubled : ");
+    displayArray(numbers, size);
+
+    /* Equivalent notations */
+    int arr[] = {10, 20, 30};
+    int *p = arr;
+    printf("\narr[1]    = %d\n", arr[1]);    /* 20 */
+    printf("*(arr+1)  = %d\n", *(arr+1));  /* 20 */
+    printf("p[1]      = %d\n", p[1]);      /* 20 */
+    printf("*(p+1)    = %d\n", *(p+1));    /* 20 */
+
+    return 0;
+}</code></pre>
+
+<h2>7.9 Pointers and Strings <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    /* String literal (read-only) */
+    char *str1 = "Hello";        /* pointer to string literal */
+    /* str1[0] = 'h'; */         /* UNDEFINED - read-only! */
+
+    /* Char array (modifiable) */
+    char str2[] = "Hello";       /* modifiable copy */
+    str2[0] = 'h';               /* OK */
+    printf("str2 = %s\n", str2);  /* hello */
+
+    /* Pointer to traverse string */
+    char name[] = "Sokha";
+    char *p = name;
+    printf("Characters: ");
+    while (*p != '\0') {
+        printf("%c ", *p);
+        p++;
+    }
+    printf("\n");
+
+    /* String length using pointer */
+    char s[] = "Programming";
+    char *q = s;
+    int len = 0;
+    while (*q++) len++;
+    printf("Length = %d\n", len);
+
+    return 0;
+}</code></pre>
+
+<h2>7.10 Dynamic Memory Allocation <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Dynamic allocation ប្រើ <code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code>, <code>free()</code> ពី <code>&lt;stdlib.h&gt;</code>:</p>
+
+<table>
+    <tr><th>Function</th><th>Description</th></tr>
+    <tr><td>malloc(size)</td><td>Allocate size bytes, uninitialized</td></tr>
+    <tr><td>calloc(n, size)</td><td>Allocate n×size bytes, initialized to 0</td></tr>
+    <tr><td>realloc(ptr, size)</td><td>Resize allocated memory</td></tr>
+    <tr><td>free(ptr)</td><td>Release allocated memory</td></tr>
+</table>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int n, i;
+
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    /* Dynamic allocation */
+    int *scores = (int*)malloc(n * sizeof(int));
+
+    if (scores == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    /* Input */
+    printf("Enter %d scores:\n", n);
+    for (i = 0; i &lt; n; i++) {
+        printf("Score[%d]: ", i+1);
+        scanf("%d", &scores[i]);
+    }
+
+    /* Process */
+    int sum = 0;
+    for (i = 0; i &lt; n; i++) sum += scores[i];
+    printf("Average = %.2f\n", (double)sum / n);
+
+    /* Free memory - MUST! */
+    free(scores);
+    scores = NULL;   /* good practice */
+
+    return 0;
+}</code></pre>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    int n = 5;
+
+    /* calloc - allocate + initialize to 0 */
+    int *arr = (int*)calloc(n, sizeof(int));
+    printf("calloc initialized: ");
+    int i;
+    for (i = 0; i &lt; n; i++) printf("%d ", arr[i]);  /* 0 0 0 0 0 */
+    printf("\n");
+
+    /* Fill array */
+    for (i = 0; i &lt; n; i++) arr[i] = (i+1) * 10;
+
+    /* realloc - resize to 8 elements */
+    arr = (int*)realloc(arr, 8 * sizeof(int));
+    for (i = 5; i &lt; 8; i++) arr[i] = 0;
+
+    printf("After realloc(8): ");
+    for (i = 0; i &lt; 8; i++) printf("%d ", arr[i]);
+    printf("\n");
+
+    free(arr);
+    arr = NULL;
+
+    /* Dynamic string */
+    char *name = (char*)malloc(50 * sizeof(char));
+    strcpy(name, "Sokha Chan");
+    printf("Name: %s\n", name);
+    free(name);
+
+    return 0;
+}</code></pre>
+
+<div class="important">
+    <strong>Memory Management Rules (ច្បាប់ក្នុង C):</strong>
+    <ul>
+        <li>រាល់ <code>malloc/calloc/realloc</code> ត្រូវមាន <code>free()</code> ផ្គូ</li>
+        <li>Always check return value ≠ NULL មុន use</li>
+        <li>កុំ free() pointer ដែលគ្មាន allocated ឬ freed ហើយ</li>
+        <li>Set pointer = NULL ក្រោយ free()</li>
+        <li>Memory leak = allocate ប៉ុន្តែ forget free → program ប្រើ RAM ច្រើនខ្លាំង</li>
+    </ul>
+</div>
+
+<h2>7.11 Function Pointers <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ៖ អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Function pointers រក្សាទុក address នៃ functions អាចប្រើ call functions dynamically:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+double add(double a, double b) { return a + b; }
+double sub(double a, double b) { return a - b; }
+double mul(double a, double b) { return a * b; }
+double dvd(double a, double b) {
+    if (b == 0) { printf("Error!\n"); return 0; }
+    return a / b;
+}
+
+/* Function pointer type */
+typedef double (*Operation)(double, double);
+
+double calculate(double a, double b, Operation op) {
+    return op(a, b);
+}
+
+int main() {
+    /* Declare function pointer */
+    double (*fp)(double, double);
+
+    fp = add;
+    printf("10 + 5 = %.2f\n", fp(10, 5));
+
+    fp = sub;
+    printf("10 - 5 = %.2f\n", fp(10, 5));
+
+    /* Array of function pointers */
+    Operation ops[4] = {add, sub, mul, dvd};
+    char *opNames[] = {"Add", "Sub", "Mul", "Div"};
+    int i;
+
+    printf("\nAll operations on 10, 5:\n");
+    for (i = 0; i &lt; 4; i++) {
+        printf("%-4s: %.2f\n", opNames[i], calculate(10, 5, ops[i]));
+    }
+
+    return 0;
+}</code></pre>
+
+<h2>7.12 Pointers to Structs (Preview) <p style="font-size: 16px;">រៀបរៀង និងបង្រៀនដោយ: អ៊ុតថា​ សៀវអុី – Rean Computer 404</p></h2>
+<p>Struct ជា user-defined type ដែលប្រមូល data fields ផ្សេងៗ:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+/* Define struct */
+struct Student {
+    char name[50];
+    int age;
+    float gpa;
+};
+
+void displayStudent(struct Student *s) {
+    printf("Name: %s, Age: %d, GPA: %.2f\n",
+           s-&gt;name, s-&gt;age, s-&gt;gpa);
+    /* s->name is same as (*s).name */
+}
+
+int main() {
+    struct Student s1;
+    struct Student *ptr = &s1;
+
+    /* Access via pointer - use -> operator */
+    strcpy(ptr-&gt;name, "Sokha");
+    ptr-&gt;age = 20;
+    ptr-&gt;gpa = 3.85;
+
+    displayStudent(ptr);
+
+    /* Array of structs */
+    struct Student students[3];
+    strcpy(students[0].name, "Dara");
+    students[0].age = 21;
+    students[0].gpa = 3.70;
+
+    struct Student *p = students;
+    printf("First: %s\n", p-&gt;name);
+
+    return 0;
+}</code></pre>
+
+<h3>ឧទាហរណ៍ពេញលេញ - Dynamic Array of Students:</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+typedef struct {
+    char name[50];
+    int age;
+    float score;
+} Student;
+
+void inputStudent(Student *s, int index) {
+    printf("\nStudent %d:\n", index+1);
+    printf("Name : "); scanf("%s", s-&gt;name);
+    printf("Age  : "); scanf("%d", &s-&gt;age);
+    printf("Score: "); scanf("%f", &s-&gt;score);
+}
+
+void displayAll(Student *arr, int n) {
+    int i;
+    printf("\n%-15s %-5s %-6s\n", "Name", "Age", "Score");
+    printf("------------------------------\n");
+    for (i = 0; i &lt; n; i++) {
+        printf("%-15s %-5d %-6.2f\n",
+               arr[i].name, arr[i].age, arr[i].score);
+    }
+}
+
+float average(Student *arr, int n) {
+    float sum = 0;
+    int i;
+    for (i = 0; i &lt; n; i++) sum += arr[i].score;
+    return sum / n;
+}
+
+int main() {
+    int n;
+    printf("Number of students: ");
+    scanf("%d", &n);
+
+    /* Dynamic allocation */
+    Student *students = (Student*)malloc(n * sizeof(Student));
+    if (!students) { printf("Memory error!\n"); return 1; }
+
+    int i;
+    for (i = 0; i &lt; n; i++) inputStudent(&students[i], i);
+
+    displayAll(students, n);
+    printf("\nClass average: %.2f\n", average(students, n));
+
+    free(students);
+    students = NULL;
+
+    return 0;
+}</code></pre>
+
+<div class="exercise">
+    <h4>លំហាត់ប្រចាំមេរៀនទី 7 - Pointers</h4>
+    <p><strong>Exercise 1:</strong> សរសេរ function <code>swap(int *a, int *b)</code> ដើម្បីដោះដូរ values ។ Test ជាមួយ main()。</p>
+    <p><strong>Exercise 2:</strong> បង្កើត function <code>reverseArray(int *arr, int size)</code> ប្រើ pointer arithmetic ។</p>
+    <p><strong>Exercise 3:</strong> សរសេរ function <code>stringLength(char *s)</code> ដោយ implement strlen() ដោយខ្លួនឯង។</p>
+    <p><strong>Exercise 4:</strong> បង្កើត program ប្រើ malloc() allocate array ដ្យ dynamic size, input values, find max/min/average, free memory ។</p>
+    <p><strong>Exercise 5:</strong> សរសេរ Dynamic String Sorter:
+    <br>- Input n strings dynamically (char** with malloc)
+    <br>- Sort strings alphabetically (bubble sort ប្រើ strcmp)
+    <br>- Display sorted results
+    <br>- Free all memory</p>
+</div>
+
+<!-- Conclusion -->
+<div class="page-break"></div>
+<div style="text-align:center;padding:50px 0;">
+    <h1 style="color:#2c3e50;border:none;">សូមអរគុណ!</h1>
+    <h2 style="color:#34495e;">Thank You!</h2>
+    <p style="font-size:18px;margin-top:30px;">
+        អ្នកបានបញ្ចប់ការសិក្សា C Programming<br>
+        ពី Introduction ដល់ Pointers
+    </p>
+    <div style="margin-top:50px;padding:30px;background:#ecf0f1;border-radius:10px;">
+        <h3 style="color:#2c3e50;">អ្វីដែលអ្នកបានសិក្សា:</h3>
+        <ul style="text-align:left;display:inline-block;font-size:16px;">
+            <li>❖ 1. Introduction to C (printf, scanf, data types)</li>
+            <li>❖ 2. Operators &amp; Expressions (#define, bitwise, cast)</li>
+            <li>❖ 3. Mathematical Functions (math.h)</li>
+            <li>❖ 4. Control Structures (if, switch, loops, goto)</li>
+            <li>❖ 5. Functions (prototypes, recursion, scope)</li>
+            <li>❖ 6. Arrays &amp; Strings (char arrays, string.h)</li>
+            <li>❖ 7. Pointers &amp; Dynamic Memory (malloc, free)</li>
+        </ul>
+    </div>
+    <p style="font-size:16px;margin-top:40px;color:#7f8c8d;">
+        សូមបន្តអនុវត្ត និងសាកល្បងសរសេរ programs ផ្ទាល់ខ្លួន!<br>
+        Keep practicing — write, compile, debug, repeat!<br><br>
+        <strong>Happy Coding in C! 💻</strong>
+    </p>
+</div>
+
+</body>
+</html>
