@@ -125,7 +125,7 @@ document
 console.log(screen.width);
 console.log(screen.height);
 console.log(navigator.userAgent);
-document
+documentាាា
     .getElementById("browserInfo")
     .innerHTML = `
         <p><strong>Screen Width:</strong> ${screen.width}px</p>

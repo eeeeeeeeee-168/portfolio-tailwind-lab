@@ -6,9 +6,8 @@
     <title>Siev E - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <!-- Header -->
-    <header class="bg-white shadow sticky top-0 z-50">
+<body class="transition-colors duration-300">
+    <header class="bg-white shadow sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-blue-600">Siev E</h1>
             <nav>
@@ -19,195 +18,119 @@
                     <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
                 </ul>
             </nav>
-            <button
-                id="themeBtn"
-                class="bg-gray-800 text-white px-4 py-2 rounded"
-            >
+            <button id="themeBtn" class="bg-gray-800 text-white px-4 py-2 rounded">
                 Dark Mode
             </button>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section id="home" class="bg-gray-50">
+    <section id="home" class="bg-gray-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
             <div>
-                <p class="text-blue-600 font-semibold mb-2">
-                    Hello, I am
-                </p>
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                    Siev E
-                </h2>
-                <p class="text-xl text-gray-700 mb-6">
-                    Frontend Developer Student
-                </p>
-                <p class="text-gray-600 mb-8">
+                <p class="text-blue-600 font-semibold mb-2">Hello, I am</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 transition-colors duration-300">Siev E</h2>
+                <p class="text-xl text-gray-700 mb-6 transition-colors duration-300">Frontend Developer Student</p>
+                <p class="text-gray-600 mb-8 transition-colors duration-300">
                     I create responsive and modern websites using HTML, CSS, Tailwind CSS and JavaScript.
                 </p>
-                <a
-                    href="#contact"
-                    class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
-                >
-                    Contact Me
-                </a>
+                
+                <div class="flex gap-4">
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                        Contact Me
+                    </a>
+                    <a href="new-index.html" class="bg-white border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 font-medium shadow-sm">
+                        View Lab 03 Features 🚀
+                    </a>
+                </div>
+
             </div>
             <div class="flex justify-center">
-                <img
-                    src="images/profile.jpg"
-                    alt="Profile"
-                    class="w-72 h-72 object-cover rounded-full shadow-lg"
-                >
+                <img src="/images/images/profile.jpg" alt="Profile" class="w-72 h-72 object-cover rounded-full shadow-lg">
             </div>
         </div>
     </section>
 
-    <!-- About Toggle Button -->
     <div class="text-center py-6">
-        <button
-            id="toggleAbout"
-            class="bg-blue-600 text-white px-4 py-2 rounded"
-        >
+        <button id="toggleAbout" class="bg-blue-600 text-white px-4 py-2 rounded">
             Show / Hide About Me
         </button>
     </div>
 
-    <!-- About -->
-    <section id="about" class="py-16 bg-white">
+    <section id="about" class="py-16 bg-white transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">
-                About Me
-            </h2>
-            <p class="text-gray-600 leading-relaxed">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 transition-colors duration-300">About Me</h2>
+            <p class="text-gray-600 leading-relaxed transition-colors duration-300">
                 I am a web development student who enjoys building clean and responsive websites.
                 I am currently learning HTML, CSS, Tailwind CSS, and JavaScript.
             </p>
         </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="py-16 bg-gray-50">
+    <section id="skills" class="py-16 bg-gray-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">
-                My Skills
-            </h2>
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10 transition-colors duration-300">My Skills</h2>
             <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="bg-white p-6 rounded-lg shadow text-center">
-                    <h3 class="text-xl font-semibold text-blue-600">
-                        HTML & CSS
-                    </h3>
+                    <h3 class="text-xl font-semibold text-blue-600">HTML & CSS</h3>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow text-center">
-                    <h3 class="text-xl font-semibold text-blue-600">
-                        Mathematics
-                    </h3>
+                    <h3 class="text-xl font-semibold text-blue-600">Mathematics</h3>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow text-center">
-                    <h3 class="text-xl font-semibold text-blue-600">
-                        Python & AI
-                    </h3>
+                    <h3 class="text-xl font-semibold text-blue-600">Python & AI</h3>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow text-center">
-                    <h3 class="text-xl font-semibold text-blue-600">
-                        C & C++ Programming
-                    </h3>
+                    <h3 class="text-xl font-semibold text-blue-600">C & C++ Programming</h3>
                 </div>
             </div>
 
-            <!-- Dynamic Skill List -->
             <div class="mt-10 text-center">
-                <input
-                    type="text"
-                    id="skillInput"
-                    placeholder="Enter Skill"
-                    class="border px-4 py-2 rounded"
-                >
-                <button
-                    id="addSkillBtn"
-                    class="bg-green-600 text-white px-4 py-2 rounded"
-                >
+                <input type="text" id="skillInput" placeholder="Enter Skill" class="border px-4 py-2 rounded text-gray-900">
+                <button id="addSkillBtn" class="bg-green-600 text-white px-4 py-2 rounded">
                     Add Skill
                 </button>
-                <ul
-                    id="skillList"
-                    class="mt-5 space-y-2"
-                ></ul>
+                <ul id="skillList" class="mt-5 space-y-2 text-gray-900"></ul>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Data -->
-    <section class="py-10 bg-white">
+    <section class="py-10 bg-white transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">
-                Portfolio Data
-            </h2>
-            <p
-                id="portfolioData"
-                class="text-center text-gray-700"
-            >
-                Loading...
-            </p>
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-6 transition-colors duration-300">Portfolio Data</h2>
+            <p id="portfolioData" class="text-center text-gray-700 transition-colors duration-300">Loading...</p>
         </div>
     </section>
 
-    <!-- Browser Information -->
-    <section class="py-10 bg-gray-100">
+    <section class="py-10 bg-gray-100 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">
-                Browser Information
-            </h2>
-            <div
-                id="browserInfo"
-                class="bg-white p-6 rounded-lg shadow"
-            ></div>
-
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-6 transition-colors duration-300">Browser Information</h2>
+            <div id="browserInfo" class="bg-white p-6 rounded-lg shadow text-gray-800"></div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-16 bg-gray-50">
+    <section id="contact" class="py-16 bg-gray-50 transition-colors duration-300">
         <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">
-                Contact Me
-            </h2>
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10 transition-colors duration-300">Contact Me</h2>
             <form class="bg-white p-6 rounded-lg shadow space-y-5">
                 <div>
-                    <label class="block text-gray-700 font-medium mb-2">
-                        Full Name
-                    </label>
-                    <input
-                        type="text"
-                        class="w-full border border-gray-300 rounded-lg px-4 py-3"
-                    >
+                    <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+                    <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900">
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-medium mb-2">
-                        Email
-                    </label>
-                    <input
-                        type="email"
-                        class="w-full border border-gray-300 rounded-lg px-4 py-3"
-                    >
+                    <label class="block text-gray-700 font-medium mb-2">Email</label>
+                    <input type="email" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900">
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-medium mb-2">
-                        Message
-                    </label>
-                    <textarea
-                        rows="5"
-                        class="w-full border border-gray-300 rounded-lg px-4 py-3"
-                    ></textarea>
+                    <label class="block text-gray-700 font-medium mb-2">Message</label>
+                    <textarea rows="5" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900"></textarea>
                 </div>
-                <button
-                    type="submit"
-                    class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
-                >
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
                     Send Message
                 </button>
             </form>
         </div>
     </section>
-    <!-- Footer -->
+
     <footer class="bg-gray-900 text-white py-6">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <p>&copy; 2026 Siev E. All rights reserved.</p>
